@@ -91,7 +91,4 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-
-  # Use integration helpers in system tests with RSpec
-  config.include Devise::Test::IntegrationHelpers, type: :system
 end

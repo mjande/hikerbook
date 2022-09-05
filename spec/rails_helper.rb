@@ -63,4 +63,19 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+
+  # Use integration helpers in system tests with RSpec
+  config.include Devise::Test::IntegrationHelpers, type: :system
+
+  # Configure drivers for use in system tests
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless
+  end
 end
+
+# Load seed data from seeds.rb to test database
+Rails.application.load_seed

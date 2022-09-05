@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @posts = Post.all
   end
@@ -13,10 +13,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash[:success] = "Post successfully created"
+      flash[:success] = 'Post successfully created'
       redirect_to root_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = 'Something went wrong'
       render 'new', status: :unprocessable_entity
     end
   end
