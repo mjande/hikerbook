@@ -8,11 +8,11 @@ RSpec.describe 'create post spec', type: :system do
   before do
     sign_in user
     visit posts_url
-    click_on 'New post'
   end
 
   context 'with valid inputs' do
     it 'successfully saves post' do
+      click_on 'New post'
       within('h1') do
         expect(page).to have_content('New Post')
       end
@@ -27,6 +27,7 @@ RSpec.describe 'create post spec', type: :system do
 
   context 'with invalid inputs' do
     it 'does not save and displays error messages' do
+      click_on 'New post'
       within('h1') do
         expect(page).to have_content('New Post')
       end
