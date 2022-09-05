@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'create post spec', type: :system do
+RSpec.describe 'create post', type: :system do
   let(:user) { create(:user) }
 
   before do

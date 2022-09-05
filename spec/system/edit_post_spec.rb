@@ -8,21 +8,23 @@ RSpec.describe 'update post', type: :system do
   before do
     sign_in user
     user.posts.create(body: 'Original post')
+    visit posts_path
   end
 
   context 'with valid inputs' do
     it 'updates successfully' do
-      click_on 'Edit post'
-      within('h1') do
-        expect(page).to have_content('Edit post')
-      end
+      click_on 'Edit'
+      expect(page).to have_content('Edit Post')
+      expect(page).to have_content('Original post')
 
       fill_in 'post_body', with: 'Updated post'
-      click_on 'Update post'
+      click_on 'Update Post'
 
       within('h1') do
         expect(page).to have_content('Posts')
       end
+
+      expect(page).not_to have_content('Original post')
       expect(page).to have_content('Updated post')
     end
   end

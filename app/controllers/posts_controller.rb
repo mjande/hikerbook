@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_post, only: %i[edit update]
 
   def index
     @posts = Post.all
@@ -21,9 +22,25 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      flash[:success] = "Post was successfully updated"
+      redirect_to posts_path
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit', status: :unprocessable_entity
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:body)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
