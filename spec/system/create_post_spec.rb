@@ -38,5 +38,3 @@ RSpec.describe 'create post spec', type: :system do
     end
   end
 end
-
-"test"

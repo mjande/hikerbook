@@ -1,0 +1,9 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+MultipleExpectations:
+   Enabled: false
+
+ExampleLength:
+   Enabled: false
