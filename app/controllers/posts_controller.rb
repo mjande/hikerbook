@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: %i[edit update]
+  before_action :set_post, only: %i[edit update destroy]
 
   def index
     @posts = Post.all
@@ -32,6 +32,15 @@ class PostsController < ApplicationController
       flash[:error] = "Something went wrong"
       render 'edit', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    if @post.destroy
+      flash[:success] = 'Post was successfully deleted.'
+    else
+      flash[:error] = 'Something went wrong'
+    end
+    redirect_to posts_path
   end
 
   private
