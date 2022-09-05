@@ -28,4 +28,19 @@ RSpec.describe 'update post', type: :system do
       expect(page).to have_content('Updated post')
     end
   end
+
+  context 'with invalid inputs' do
+    it 'does not update and displays error message' do
+      click_on 'Edit'
+      within('h1') do
+        expect(page).to have_content('Edit Post')
+      end
+
+      fill_in 'post_body', with: ''
+      click_on 'Update Post'
+
+      expect(page).to have_content('Edit Post')
+      expect(page).to have_content("Body can't be blank")
+    end
+  end
 end
