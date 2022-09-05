@@ -1,0 +1,5 @@
+<%= form_with model: post do |f| %>
+  <%= f.label 'Say something about your hike...', :body %>
+  <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>
