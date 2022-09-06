@@ -1,3 +1,6 @@
 require:
   - rubocop-rspec
   - rubocop-rails
+
+RSpec/ImplicitExpect:
+  EnforcedStyle: should
