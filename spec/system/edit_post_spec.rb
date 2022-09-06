@@ -7,7 +7,7 @@ RSpec.describe 'update post', type: :system do
 
   before do
     sign_in user
-    user.posts.create(body: 'Original post')
+    user.posts.create(trail: 'Original trail', park: 'Original park', body: 'Original post')
     visit posts_path
   end
 

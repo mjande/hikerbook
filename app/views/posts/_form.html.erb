@@ -5,7 +5,17 @@
 <% end %>
 
 <%= form_with model: post do |f| %>
-  <%= f.label 'Say something about your hike...', :body %>
-  <%= f.text_area :body %>
+  <div>
+    <%= f.label :trail, 'Trail Name:' %>
+    <%= f.text_field :trail %>
+  </div>
+  <div>
+    <%= f.label :park, 'Park Name:' %>
+    <%= f.text_field :park %>
+  </div>
+  <div>
+    <%= f.label :body, 'Description:' %>
+    <%= f.text_area :body %>
+  </div>
   <%= f.submit %>
 <% end %>

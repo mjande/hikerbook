@@ -1,5 +1,9 @@
 <div class="post">
-  <%= post.body %>
+  <div>
+    <%= post.trail %>
+    <%= post.park %>
+  </div>
+  <div><%= post.body %></div>
   <%= link_to 'Edit', edit_post_path(post) %>
   <%= button_to 'Delete', post_path(post), method: :delete %>
 </div>

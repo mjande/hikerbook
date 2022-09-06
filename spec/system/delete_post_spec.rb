@@ -7,13 +7,14 @@ RSpec.describe 'delete post', type: :system do
 
   before do
     sign_in user
-    user.posts.create(body: 'Original post')
+    user.posts.create(trail: 'Original trail', park: 'Original park', body: 'Original post')
     visit posts_path
   end
 
   it 'successfully deletes post' do
+    expect(page).to have_content('Original post')
     click_on 'Delete'
-    
+
     expect(page).not_to have_content('Original post')
   end
 end
