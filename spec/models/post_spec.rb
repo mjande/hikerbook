@@ -9,12 +9,12 @@ RSpec.describe Post, type: :model do
   end
 
   it 'is not valid without a title' do
-    expect(described_class.new).not_to be_valid
+    expect(described_class.new).to be_invalid
   end
 
   it 'is not valid without a user' do
     post = described_class.new(body: 'test')
-    expect(post).not_to be_valid
+    expect(post).to be_invalid
   end
 
   it 'belongs to a user' do

@@ -77,5 +77,9 @@ RSpec.configure do |config|
   end
 end
 
-# Load seed data from seeds.rb to test database
-Rails.application.load_seed
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
