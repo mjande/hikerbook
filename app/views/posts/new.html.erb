@@ -1,8 +1,10 @@
 <div class="columns is-centered">
   <div class="column is-half">
     <h1 class="title">New Post</h1>
-    <div class="card">
-      <%= render 'form', post: @post %>
-    </div>
+    <%= turbo_frame_tag @post do %>
+      <div class="card">
+        <%= render 'form', post: @post %>
+      </div>
+    <% end %>
   </div>
 </div>

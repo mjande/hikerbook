@@ -14,10 +14,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash[:success] = 'Post successfully created'
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'Post successfully created' }
+        format.turbo_stream
+      end
     else
-      flash[:error] = 'Something went wrong'
       render 'new', status: :unprocessable_entity
     end
   end
