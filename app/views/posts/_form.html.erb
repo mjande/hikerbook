@@ -4,18 +4,28 @@
   <% end %>
 <% end %>
 
-<%= form_with model: post do |f| %>
-  <div>
-    <%= f.label :trail, 'Trail Name:' %>
-    <%= f.text_field :trail %>
-  </div>
-  <div>
-    <%= f.label :park, 'Park Name:' %>
-    <%= f.text_field :park %>
-  </div>
-  <div>
-    <%= f.label :description, 'Description:' %>
-    <%= f.text_area :description %>
-  </div>
-  <%= f.submit %>
-<% end %>
+<div class="box">
+  <%= form_with model: post do |f| %>
+    <div class="field is-horizontal">
+      <div class="field mr-5">
+        <%= f.label :trail, 'Trail Name:', class: 'field-label' %>
+        <div class="control field-body">
+          <%= f.text_field :trail, class: 'input' %>
+        </div>
+      </div>
+      <div class="field mr-5">
+        <%= f.label :park, 'Park Name:', class: 'field-label' %>
+        <div class="control field-body">
+          <%= f.text_field :park, class: 'input' %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="field is-expanded">
+      <%= f.label :description, 'Description:' %>
+      <div class="control is-medium"><%= f.text_area :description, class: 'input', rows: 10 %></div>
+    </div>
+    <%= f.submit class: 'button' %>
+  <% end %>
+</div>
