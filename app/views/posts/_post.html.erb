@@ -1,28 +1,30 @@
-<div class="post card my-5">
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class='image is-48x48'>
-          <img class='is-rounded'src='https://picsum.photos/48/48'>
-        </figure>
-      </div>
+<%= turbo_frame_tag dom_id(post) do %>
+  <div class="post card my-5">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class='image is-48x48'>
+            <img class='is-rounded'src='https://picsum.photos/48/48'>
+          </figure>
+        </div>
 
-      <div class="media-content">
-        <strong><%= post.user.username %></strong>
-        <div>
-          <%= post.trail %> at 
-          <%= post.park %>
+        <div class="media-content">
+          <strong><%= post.user.username %></strong>
+          <div>
+            <%= post.trail %> at 
+            <%= post.park %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div><%= post.description %></div>
-    <div><%= post.time %></div>
-  </div>
-  <% if post.user == current_user %>
-    <div class="card-footer">
-      <%= link_to 'Edit', edit_post_path(post), class: 'card-footer-item' %>
-      <%= link_to 'Delete', post_path(post), data: { turbo_method: :delete }, class: 'card-footer-item' %>
+      <div><%= post.description %></div>
+      <div><%= post.time %></div>
     </div>
-  <% end %>
-</div>
+    <% if post.user == current_user %>
+      <div class="card-footer">
+        <%= link_to 'Edit', edit_post_path(post), class: 'card-footer-item' %>
+        <%= link_to 'Delete', post_path(post), data: { turbo_method: :delete }, class: 'card-footer-item' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
