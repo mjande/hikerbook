@@ -7,7 +7,7 @@ RSpec.describe 'update post', type: :system do
 
   before do
     sign_in user
-    user.posts.create(trail: 'Original trail', park: 'Original park', body: 'Original post')
+    user.posts.create(trail: 'Original trail', park: 'Original park', description: 'Original post')
     visit posts_path
   end
 
@@ -17,12 +17,8 @@ RSpec.describe 'update post', type: :system do
       expect(page).to have_content('Edit Post')
       expect(page).to have_content('Original post')
 
-      fill_in 'post_body', with: 'Updated post'
+      fill_in 'post_description', with: 'Updated post'
       click_on 'Update Post'
-
-      within('h1') do
-        expect(page).to have_content('Posts')
-      end
 
       expect(page).not_to have_content('Original post')
       expect(page).to have_content('Updated post')
@@ -36,11 +32,11 @@ RSpec.describe 'update post', type: :system do
         expect(page).to have_content('Edit Post')
       end
 
-      fill_in 'post_body', with: ''
+      fill_in 'post_description', with: ''
       click_on 'Update Post'
 
       expect(page).to have_content('Edit Post')
-      expect(page).to have_content("Body can't be blank")
+      expect(page).to have_content("Description can't be blank")
     end
   end
 end

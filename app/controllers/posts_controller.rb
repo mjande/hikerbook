@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:trail, :park, :body)
+    params.require(:post).permit(:trail, :park, :description)
   end
 
   def set_post

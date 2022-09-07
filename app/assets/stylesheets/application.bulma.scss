@@ -4,11 +4,11 @@
 // @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
 // Set your brand colors
-// $purple: #8A4D76;
-// $pink: #FA7C91;
-// $brown: #757763;
-// $beige-light: #D0D1CD;
-// $beige-lighter: #EFF0EB;
+$dark-olive-green: #606c38ff;
+$cornsilk: #fefae0ff;
+$earth-yellow: #dda15eff;
+$liver-dogs: #bc6c25ff;
+$smoky-black: #0f0e0eff;
 
 // Update Bulma's global variables
 // $family-sans-serif: "Nunito", sans-serif;
@@ -20,10 +20,11 @@
 // $fullhd-enabled: false;
 
 // Update some of Bulma's component variables
-// $body-background-color: $beige-lighter;
-// $control-border-width: 2px;
-// $input-border-color: transparent;
-// $input-shadow: none;
+  $body-background-color: $cornsilk;
+  $navbar-background-color: $smoky-black;
+  $card-radius: 0.5rem;
+  $button-background-color: $earth-yellow;
+  $button-border-color: $smoky-black;
 
 // Import only what you need from Bulma
 // @import "bulma/sass/utilities/_all.sass";

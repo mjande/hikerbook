@@ -1,4 +1,15 @@
-<%= link_to "New post", new_post_path %>
-
-<h1>Posts</h1>
-<div><%= render @posts %></div>
+<section class="section">
+  <div class="columns">
+    <div class="column">Today's Parks</div>
+    <div class="column is-half">
+      <div class="level">
+        <div class="level-left">What have you been up to lately?</div>
+        <div class="level-right">
+          <%= link_to "New post", new_post_path, class: "button" %>
+        </div>
+      </div>
+      <div><%= render @posts %></div>
+    </div>
+    <div class="column">Friends</div>
+  </div>
+</section>
