@@ -1,3 +1,11 @@
+<% if flash[:notice] %>
+  <div><%= flash[:notice] %></div>
+<% end %>
+
+<% if @friend_request %>
+  <%= @friend_request.errors.messages %>
+<% end %>
+
 <section class="section">
   <div class="columns is-centered">
     <div class="column is-half">

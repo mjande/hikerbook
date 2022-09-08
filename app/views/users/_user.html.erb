@@ -11,7 +11,11 @@
     </div>
 
     <div class="media-right">
-      <%= button_to "Send Friend Request", '#', class: 'button' %>
+      <%= form_with model: FriendRequest.new do |f| %>
+        <%= f.hidden_field :sender_id, value: current_user.id %>
+        <%= f.hidden_field :potential_friend_id, value: user.id %>
+        <%= f.submit "Send Friend Request" %>
+      <% end %>
     </div>
   </div>
 </div>
