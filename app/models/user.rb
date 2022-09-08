@@ -12,5 +12,9 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :friendships, dependent: :destroy
+  has_many :friendships, foreign_key: :friend, inverse_of: :user, dependent: :destroy
   has_many :friends, through: :friendships, class_name: 'User'
+
+  has_many :friend_requests, foreign_key: :sender, inverse_of: :potential_friend, dependent: :destroy
+  has_many :friend_requests, foreign_key: :potential_friend, inverse_of: :sender, dependent: :destroy
 end
