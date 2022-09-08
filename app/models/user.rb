@@ -9,4 +9,6 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true
 
   has_many :posts, dependent: :destroy
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships, class_name: 'User'
 end
