@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'reject friend request', type: :system do
+  include ActionView::RecordIdentifier
+  
   let!(:user) { create(:user) }
   let!(:friend) { User.create(username: 'Friend', email: 'friend@example.com', password: 'password') }
   let(:request) { FriendRequest.find_by(sender: friend) }
@@ -11,7 +13,7 @@ RSpec.describe 'reject friend request', type: :system do
     sign_in friend
     visit users_path
 
-    within(".#{dom_id(user)}") do
+    within("##{dom_id(user)}") do
       click_on 'Send Friend Request'
     end
     sign_out friend

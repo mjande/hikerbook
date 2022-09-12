@@ -11,10 +11,14 @@
     </div>
 
     <div class="media-right">
-      <%= form_with model: FriendRequest.new do |f| %>
-        <%= f.hidden_field :sender_id, value: current_user.id %>
-        <%= f.hidden_field :potential_friend_id, value: user.id %>
-        <%= f.submit "Send Friend Request" %>
+      <% if current_user.friends?(user) %>
+
+      <% else %>
+        <%= form_with model: FriendRequest.new, id: dom_id(user) do |f| %>
+          <%= f.hidden_field :sender_id, value: current_user.id %>
+          <%= f.hidden_field :potential_friend_id, value: user.id %>
+          <%= f.submit "Send Friend Request" %>
+        <% end %>
       <% end %>
     </div>
   </div>
