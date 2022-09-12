@@ -9,21 +9,13 @@ RSpec.describe 'reject friend request', type: :system do
   let!(:friend) { User.create(username: 'Friend', email: 'friend@example.com', password: 'password') }
   let(:request) { FriendRequest.find_by(sender: friend) }
 
-  before do
-    sign_in friend
-    visit users_path
-
-    within("##{dom_id(user)}") do
-      click_on 'Send Friend Request'
-    end
-    sign_out friend
-  end
-
   it 'adds friendship and deletes friend request' do
+    FriendRequest.create(sender_id: friend, receiver_id: user)
+
     sign_in user
     visit root_path
 
-    within(dom_id(request)) do
+    within(dom_id(friend)) do
       click_on 'Add Friend'
     end
 

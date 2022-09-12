@@ -16,7 +16,8 @@ RSpec.describe 'send friend request', type: :system do
       click_on 'Send Friend Request'
     end
 
-    request = FriendRequest.new(sender: user, potential_friend: friend)
-    expect(user.friend_requests.first).to eq(request)
+    expect(user.sent_requests.first).to have_attributes(sender_id: user.id, receiver_id: friend.id)
+    expect(friend.received_requests.first).to have_attributes(sender_id: user.id, receiver_id: friend.id)
+    expect(page).to have_content('Your friend request was sent!')
   end
 end

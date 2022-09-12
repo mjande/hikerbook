@@ -62,4 +62,30 @@ RSpec.describe User, type: :model do
       expect(user.friends).to include(friend1, friend2)
     end
   end
+
+  describe '#sent_request?' do
+    let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
+
+    it 'returns true if the current user has already sent a request to that user' do
+      FriendRequest.create(sender: user, receiver: friend)
+      expect(user).to be_sent_request(friend)
+    end
+
+    it 'returns false if the current user has not sent a request to that user' do
+      expect(user).not_to be_sent_request(friend)
+    end
+  end
+
+  describe '#received_request?' do
+    let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
+
+    it 'returns true if the current user received a request from that user' do
+      FriendRequest.create(sender: friend, receiver: user)
+      expect(user).to be_received_request(friend)
+    end
+
+    it 'returns false if the current user has not received a request from that user' do
+      expect(user).not_to be_received_request(friend)
+    end
+  end
 end

@@ -71,7 +71,7 @@ RSpec.configure do |config|
 
   # Configure drivers for use in system tests
   config.before(:each, type: :system) do
-    driven_by :selenium_chrome
+    driven_by :rack_test
   end
 
   config.before(:each, type: :system, js: true) do
