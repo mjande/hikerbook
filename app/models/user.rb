@@ -56,4 +56,9 @@ class User < ApplicationRecord
   def received_request?(user)
     FriendRequest.where(sender: user, receiver: self).exists?
   end
+
+  def friendship(user)
+    Friendship.find_by(user1_id: self, user2_id: user) ||
+      Friendship.find_by(user1_id: user, user2_id: self)
+  end
 end

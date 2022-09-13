@@ -63,6 +63,10 @@ RSpec.describe User, type: :model do
       expect(user.friends).to include(friend1, friend2)
     end
 
+    it 'works in both directions' do
+      expect(friend1.friends).to include(user)
+    end
+
     it 'does not include users that are not friends' do
       expect(user.friends).not_to include(friend3)
     end

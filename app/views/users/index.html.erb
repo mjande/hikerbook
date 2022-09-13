@@ -3,8 +3,16 @@
 <% end %>
 
 <% if @friend_request %>
-  <%= @friend_request.errors.messages %>
+  <% @friend_request.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% elsif @friendship %>
+  <% @friendship.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
 <% end %>
+
+
 
 <section class="section">
   <div class="columns is-centered">

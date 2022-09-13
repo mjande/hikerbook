@@ -1,5 +1,6 @@
-<div class="box">  
+<div class="box" id="<%= dom_id(user) %>">  
   <div class="media is-flex is-align-items-center">
+    
     <div class="media-left">
       <figure class='image is-48x48'>
         <img class='is-rounded'src='https://picsum.photos/48/48'>
@@ -8,22 +9,23 @@
 
     <div class="media-content">
       <strong><%= user.username %></strong>
+      <% if current_user.friends.include?(user) %>
+        <div>Friends</div>
+      <% end %>
     </div>
+
 
     <div class="media-right">
       <% if current_user.friends.include?(user) %>
-
+        <%= button_to "Remove Friend", current_user.friendship(user), method: :delete %>
       <% elsif current_user.sent_request?(user) %>
         <div>Friend Request Sent!</div>
       <% elsif current_user.received_request?(user) %>
-
+        <%= button_to "Add Friend", Friendship.new, params: { user2: user } %>
       <% else %>
-        <%= form_with model: FriendRequest.new, id: dom_id(user) do |f| %>
-          <%= f.hidden_field :sender_id, value: current_user.id%>
-          <%= f.hidden_field :receiver_id, value: user.id %>
-          <%= f.submit "Send Friend Request" %>
-        <% end %>
+        <%= button_to "Send Friend Request", FriendRequest.new, params: { receiver: user} %>
       <% end %>
     </div>
+
   </div>
 </div>
