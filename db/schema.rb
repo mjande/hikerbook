@@ -25,12 +25,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_181352) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "friend_id", null: false
+    t.bigint "user1_id", null: false
+    t.bigint "user2_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id"], name: "index_friendships_on_user_id"
+    t.index ["user1_id"], name: "index_friendships_on_user1_id"
+    t.index ["user2_id"], name: "index_friendships_on_user2_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_08_181352) do
 
   add_foreign_key "friend_requests", "users", column: "receiver_id"
   add_foreign_key "friend_requests", "users", column: "sender_id"
-  add_foreign_key "friendships", "users"
-  add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "friendships", "users", column: "user1_id"
+  add_foreign_key "friendships", "users", column: "user2_id"
   add_foreign_key "posts", "users"
 end

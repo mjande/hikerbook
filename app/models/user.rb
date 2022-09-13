@@ -27,19 +27,27 @@ class User < ApplicationRecord
   has_many :requested_friends, through: :sent_requests, source: :receiver
 
   # Friendships of the user (NOTE: :friendships indicates records where the user
-  # is listed as :user. Two records should exist for each 'friendhsip', one
+  # is listed as :user. Two records should exist for each 'friendship', one
   # listing each user as the :user. To access each record from the other
   # direction, there is the utility association called :received_friendships.
   # See note below for plans to fix this temporary behavior).
 
   # TODO: Change friendship model so that only one instance needs to exist for
   # every friendship
-  has_many :friendships, foreign_key: :user, inverse_of: :user, dependent: :destroy
-  has_many :received_friendships, class_name: 'Friendship',
-                                  foreign_key: :friend,
-                                  inverse_of: :friend,
-                                  dependent: :destroy
-  has_many :friends, through: :friendships, source: :friend
+  has_many :friendships_as1, class_name: 'Friendship',
+                             foreign_key: :user1_id,
+                             inverse_of: :user1,
+                             dependent: :destroy
+  has_many :friends_as1, through: :friendships_as1, source: :user2
+  has_many :friendships_as2, class_name: 'Friendship',
+                             foreign_key: :user2_id,
+                             inverse_of: :user2,
+                             dependent: :destroy
+  has_many :friends_as2, through: :friendships_as2, source: :user1
+
+  def friends
+    friends_as1 + friends_as2
+  end
 
   def sent_request?(user)
     FriendRequest.where(sender: self, receiver: user).exists?

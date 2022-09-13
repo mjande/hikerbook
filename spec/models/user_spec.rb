@@ -52,14 +52,19 @@ RSpec.describe User, type: :model do
   describe '#friends' do
     let(:friend1) { create(:user, username: 'Friend #1', email: 'friend1@example.com') }
     let(:friend2) { create(:user, username: 'Friend #2', email: 'friend2@example.com') }
+    let(:friend3) { create(:user, username: 'Friend #3', email: 'friend3@example.com') }
 
     before do
-      Friendship.create(user:, friend: friend1)
-      Friendship.create(user:, friend: friend2)
+      Friendship.create(user1: user, user2: friend1)
+      Friendship.create(user1: user, user2: friend2)
     end
 
     it 'returns an array of all current friends' do
       expect(user.friends).to include(friend1, friend2)
+    end
+
+    it 'does not include users that are not friends' do
+      expect(user.friends).not_to include(friend3)
     end
   end
 
