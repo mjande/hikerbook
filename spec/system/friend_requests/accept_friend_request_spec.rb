@@ -18,14 +18,12 @@ RSpec.describe 'accept friend request', type: :system do
       click_on 'Add Friend'
     end
 
-    with
-
     expect(friend.friends).to include(user)
+    expect(user.reload.friends).to include(friend)
+    
 
-    # TODO: Figure out why this clause fails. The friends association works in
-    # the model tests, and it works from the other direction, but for an unknown
-    # reason this one comes back empty. Either discover cause or refactor to a
-    # way that still captures behaviour but also passes.
-    expect(user.friends).to include(friend)
+    within("##{dom_id(friend)}") do
+      expect(page).to have_content('Friends')
+    end
   end
 end

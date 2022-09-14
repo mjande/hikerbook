@@ -62,8 +62,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  
-
   config.include FactoryBot::Syntax::Methods
 
   # Use integration helpers in system tests with RSpec
@@ -72,7 +70,7 @@ RSpec.configure do |config|
   # Configure drivers for use in system tests
   config.before(:each, type: :system) do
     driven_by :rack_test
-    # driver_by :selenium_chrome
+    # driven_by :selenium_chrome
   end
 
   config.before(:each, type: :system, js: true) do
