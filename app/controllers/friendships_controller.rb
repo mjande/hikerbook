@@ -23,8 +23,8 @@ class FriendshipsController < ApplicationController
 
     if @friendship.destroy
       respond_to do |format|
-        format.html { redirect_to users_path, notice: 'You are no longer friends.' }
-        format.turbo_stream { redirect_to users_path, notice: 'You are no longer friends.' }
+        format.html { redirect_to users_path, notice: 'You are no longer friends!' }
+        format.turbo_stream { redirect_to users_path, notice: 'You are no longer friends!' }
       end
     else
       flash.now[:notice] = 'Something went wrong'

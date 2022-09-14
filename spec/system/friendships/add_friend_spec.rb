@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'accept friend request', type: :system do
+RSpec.describe 'add friend', type: :system do
   include ActionView::RecordIdentifier
 
   let!(:user) { create(:user) }
@@ -20,7 +20,8 @@ RSpec.describe 'accept friend request', type: :system do
 
     expect(friend.friends).to include(user)
     expect(user.reload.friends).to include(friend)
-    
+
+    expect(page).to have_content("You and #{friend.username} are now friends!")
 
     within("##{dom_id(friend)}") do
       expect(page).to have_content('Friends')

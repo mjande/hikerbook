@@ -72,29 +72,47 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#sent_request?' do
+  describe '#sent_request_to' do
     let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
 
-    it 'returns true if the current user has already sent a request to that user' do
-      FriendRequest.create(sender: user, receiver: friend)
-      expect(user).to be_sent_request(friend)
+    it 'returns request if the current user has already sent a request to that user' do
+      request = FriendRequest.create(sender: user, receiver: friend)
+      expect(user.sent_request_to(friend)).to eq(request)
     end
 
     it 'returns false if the current user has not sent a request to that user' do
-      expect(user).not_to be_sent_request(friend)
+      expect(user.sent_request_to(friend)).to be_falsey
     end
   end
 
-  describe '#received_request?' do
+  describe '#received_request_from' do
     let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
 
-    it 'returns true if the current user received a request from that user' do
-      FriendRequest.create(sender: friend, receiver: user)
-      expect(user).to be_received_request(friend)
+    it 'returns request if the current user received a request from that user' do
+      request = FriendRequest.create(sender: friend, receiver: user)
+      expect(user.received_request_from(friend)).to eq(request)
     end
 
     it 'returns false if the current user has not received a request from that user' do
-      expect(user).not_to be_received_request(friend)
+      expect(user.received_request_from(friend)).to be_falsey
+    end
+  end
+
+  describe '#friendship_with' do
+    let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
+
+    it 'returns friendship if current user (as user1) is friends with user' do
+      friendship = Friendship.create(user1: user, user2: friend)
+      expect(user.friendship_with(friend)).to eq(friendship)
+    end
+
+    it 'returns friendship if current user (as user2) is friends with user' do
+      friendship = Friendship.create(user1: friend, user2: user)
+      expect(user.friendship_with(friend)).to eq(friendship)
+    end
+
+    it 'returns false if current user is not friends with user' do
+      expect(user.friendship_with(friend)).to be_falsey
     end
   end
 end
