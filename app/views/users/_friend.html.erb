@@ -11,10 +11,5 @@ without any actions (to save space/readability). -->
 
   <div class="media-content">
     <strong><%= user.username %></strong>
-    <% if current_user.friendship_with(user) %>
-      <div>Friends</div>
-    <% elsif current_user.received_request_from(user) %>
-      <div>Sent you a friend request!</div>
-    <% end %>
   </div>
 </div>

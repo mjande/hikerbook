@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.order('created_at DESC')
+    @posts = Post.where(user: current_user.friends)
   end
 
   def new
