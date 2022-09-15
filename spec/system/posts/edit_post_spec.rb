@@ -32,11 +32,11 @@ RSpec.describe 'update post', type: :system do
         expect(page).to have_content('Edit Post')
       end
 
-      fill_in 'post_description', with: ''
+      fill_in 'post_park', with: ''
       click_on 'Update Post'
 
-      expect(page).to have_content('Edit Post')
-      expect(page).to have_content("Description can't be blank")
+      expect(page).to have_content('Edit')
+      expect(page).to have_content("Park can't be blank")
     end
   end
 end

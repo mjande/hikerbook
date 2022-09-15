@@ -43,7 +43,6 @@ RSpec.describe 'create post', type: :system do
       expect(page).to have_content('New Post')
       expect(page).to have_content("Trail can't be blank")
       expect(page).to have_content("Park can't be blank")
-      expect(page).to have_content("Description can't be blank")
     end
   end
 end
