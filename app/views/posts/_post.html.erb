@@ -9,7 +9,7 @@
         </div>
 
         <div class="media-content">
-          <strong><%= post.user.username %></strong>
+          <strong><%= link_to post.user.username, user_path(post.user), data: { turbo: false }, class: "has-text-black" %></strong>
           <div>
             <%= post.trail %> at 
             <%= post.park %>

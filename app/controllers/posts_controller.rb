@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(user: current_user.friends)
+    render layout: 'home'
   end
 
   def new
@@ -18,7 +19,6 @@ class PostsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to root_path }
         format.turbo_stream
-        
       end
     else
       flash.now[:notice] = 'Something went wrong'

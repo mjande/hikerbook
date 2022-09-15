@@ -2,10 +2,9 @@
   <%= turbo_stream_from friend, 'posts' %>
 <% end %>
 
-<section class="section">
-  <div class="columns">
-    <div class="column">Today's Parks</div>
-    <div class="column is-half">
+
+
+
       <div class="level">
         <div class="level-left">What have you been up to lately?</div>
         <div class="level-right">
@@ -18,16 +17,7 @@
           <%= render partial: 'post', locals: { post: post, user: current_user } %>
         <% end %>
       <% end %>
-    </div>
-    <div class="column">
-      <div class="box">
-        <h1 class="subtitle is-underlined">Friends</h1>
-        <% current_user.friends.each do |friend| %>
-          <%= render partial: 'users/friend', locals: { user: friend } %>
-          <hr>
-        <% end %>
-        <%= link_to 'Find Friends', users_path %>
-      </div>
-    </div>
-  </div>
-</section>
+
+
+
+
