@@ -1,7 +1,10 @@
 <%= turbo_frame_tag post do %>
   <% if post.errors.any? %>
     <% post.errors.full_messages.each do |msg| %>
-      <%= msg %>
+      <div class="notification is-danger" data-controller="notification">
+        <button class="delete" data-action="notification#delete"></button>
+        <%= msg %>
+      </div>
     <% end %>
   <% end %>
 
