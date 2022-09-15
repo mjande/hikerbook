@@ -3,7 +3,7 @@
 class Post < ApplicationRecord
   validates :trail, presence: true
   validates :park, presence: true
-  validates :description, presence: true
+  validates :description, length: { maximum: 280 }
 
   belongs_to :user
 
