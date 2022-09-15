@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  after_create_commit -> { broadcast_prepend_later_to 'posts', locals: { user: Current.user, post: self } }
+  after_create_commit -> { broadcast_prepend_later_to [Current.user, 'posts'], target: 'posts', locals: { user: Current.user, post: self } }
   after_update_commit -> { broadcast_replace_later_to 'posts', locals: { user: Current.user, post: self } }
   after_destroy_commit -> { broadcast_remove_to 'posts' }
 
