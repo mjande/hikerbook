@@ -16,11 +16,13 @@
       <div class="columns">
         <div class="column">Today's Parks</div>
         <div class="column is-half">
-          <%= yield %>
+          <%= turbo_frame_tag 'middle-column' do%>
+            <%= yield %>
+          <% end %>
         </div>
         <div class="column">
           <div class="box">
-            <h1 class="subtitle is-underlined">Friends</h1>
+            <h1 class="subtitle">Friends</h1>
             <% current_user.friends.each do |friend| %>
               <%= render partial: 'users/friend', locals: { user: friend } %>
               <hr>

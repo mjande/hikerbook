@@ -9,7 +9,7 @@
         </div>
 
         <div class="media-content">
-          <strong><%= link_to post.user.username, user_path(post.user), data: { turbo: false }, class: "has-text-black" %></strong>
+          <strong><%= link_to post.user.username, user_path(post.user), class: "has-text-black", data: { turbo_frame: 'middle-column' } %></strong>
           <div>
             <%= post.trail %> at 
             <%= post.park %>

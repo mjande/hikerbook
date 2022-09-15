@@ -13,6 +13,6 @@ class Post < ApplicationRecord
 
   def time
     time_zone = ActiveSupport::TimeZone['Eastern Time (US & Canada)']
-    created_at.in_time_zone(time_zone).strftime('%a, %B %e, %Y at %I:%M%p')
+    created_at.in_time_zone(time_zone).strftime('%a, %B %e, %Y at %I:%M %p')
   end
 end

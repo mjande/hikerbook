@@ -2,21 +2,18 @@
   <%= turbo_stream_from friend, 'posts' %>
 <% end %>
 
-
-
-
-      <div class="level">
-        <div class="level-left">What have you been up to lately?</div>
-        <div class="level-right">
-          <%= link_to "New post", new_post_path, class: "button", data: { turbo_frame: dom_id(Post.new) } %>
-        </div>
-      </div>
-      <%= turbo_frame_tag dom_id(Post.new) %>  
-      <%= turbo_frame_tag 'posts' do %>
-        <% @posts.each do |post| %>
-          <%= render partial: 'post', locals: { post: post, user: current_user } %>
-        <% end %>
-      <% end %>
+<div class="level">
+  <div class="level-left">What have you been up to lately?</div>
+  <div class="level-right">
+    <%= link_to "New post", new_post_path, class: "button", data: { turbo_frame: dom_id(Post.new) } %>
+  </div>
+</div>
+<%= turbo_frame_tag dom_id(Post.new) %>  
+<%= turbo_frame_tag 'posts' do %>
+  <% @posts.each do |post| %>
+    <%= render partial: 'post', locals: { post: post, user: current_user } %>
+  <% end %>
+<% end %>
 
 
 
