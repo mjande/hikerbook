@@ -20,7 +20,7 @@
       <div><%= post.description %></div>
       <div><%= post.time %></div>
     </div>
-    <% if post.user == current_user %>
+    <% if post.user == user %>
       <div class="card-footer">
         <%= link_to 'Edit', edit_post_path(post), class: 'card-footer-item' %>
         <%= link_to 'Delete', post_path(post), data: { turbo_method: :delete }, class: 'card-footer-item' %>

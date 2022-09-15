@@ -14,11 +14,14 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
+      flash[:success] = 'Post successfully created'
       respond_to do |format|
-        format.html { redirect_to root_path, notice: 'Post successfully created' }
+        format.html { redirect_to root_path }
         format.turbo_stream
+        
       end
     else
+      flash.now[:notice] = 'Something went wrong'
       render 'new', status: :unprocessable_entity
     end
   end
@@ -28,9 +31,11 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:success] = "Post was successfully updated"
-      redirect_to posts_path
+      respond_to do |format|
+        format.html { redirect_to posts_path }
+      end
     else
-      flash[:error] = "Something went wrong"
+      flash.now[:notice] = "Something went wrong"
       render 'edit', status: :unprocessable_entity
     end
   end
@@ -38,10 +43,15 @@ class PostsController < ApplicationController
   def destroy
     if @post.destroy
       flash[:success] = 'Post was successfully deleted.'
+      respond_to do |format|
+        format.html { redirect_to posts_path }
+        format.turbo_stream
+      end
     else
-      flash[:error] = 'Something went wrong'
+      flash.now[:error] = 'Something went wrong'
+      redirect_to posts_path
     end
-    redirect_to posts_path
+    
   end
 
   private

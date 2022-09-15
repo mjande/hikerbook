@@ -1,3 +1,5 @@
+<%= turbo_stream_from 'posts' %>
+
 <section class="section">
   <div class="columns">
     <div class="column">Today's Parks</div>
@@ -10,7 +12,9 @@
       </div>
       <%= turbo_frame_tag dom_id(Post.new) %>  
       <%= turbo_frame_tag 'posts' do %>
-        <div><%= render @posts %></div>
+        <% @posts.each do |post| %>
+          <%= render partial: 'post', locals: { post: post, user: current_user } %>
+        <% end %>
       <% end %>
     </div>
     <div class="column">
