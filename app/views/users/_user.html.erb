@@ -1,4 +1,4 @@
-<div class="box" id="<%= dom_id(user) %>">  
+<div class="box" id="<%= dom_id(user) %>">
   <div class="media is-flex is-align-items-center">
     
     <div class="media-left">
@@ -16,14 +16,13 @@
       <% end %>
     </div>
 
-
     <div class="media-right">
       <% if current_user.friendship_with(user) %>
-        <%= button_to "Remove Friend", current_user.friendship_with(user), method: :delete, class: 'button' %>
+        <%= button_to "Remove Friend", current_user.friendship_with(user), method: :delete, class: 'button has-background-danger has-text-white-bis' %>
       <% elsif current_user.received_request_from(user) %>
         <div class="level is-mobile">
           <%= button_to "Add Friend", Friendship.new, params: { user2: user }, class: 'button mr-1' %>
-          <%= button_to "Ignore", current_user.received_request_from(user), method: :delete, class: 'button ml-1' %>
+          <%= button_to "Ignore", current_user.received_request_from(user), method: :delete, class: 'button ml-1 has-background-danger has-text-white-bis' %>
         </div>
       <% elsif current_user.sent_request_to(user) %>
         <div>Friend Request Sent!</div>

@@ -9,15 +9,17 @@ $cornsilk: #fefae0ff;
 $earth-yellow: #dda15eff;
 $liver-dogs: #bc6c25ff;
 $smoky-black: #0f0e0eff;
+$lava: #c42021ff;
 
 // Update Bulma's global variables
 // $family-sans-serif: "Nunito", sans-serif;
 // $grey-dark: $brown;
 // $grey-light: $beige-light;
-// $primary: $purple;
+$primary: $earth-yellow;
 // $link: $pink;
 // $widescreen-enabled: false;
 // $fullhd-enabled: false;
+$danger: $lava;
 
 // Update some of Bulma's component variables
   $body-background-color: $cornsilk;
