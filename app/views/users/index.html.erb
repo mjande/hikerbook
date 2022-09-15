@@ -1,15 +1,24 @@
-<% if flash[:notice] %>
-  <div><%= flash[:notice] %></div>
-<% end %>
-
-<% if @friend_request %>
-  <% @friend_request.errors.full_messages.each do |msg| %>
-    <%= msg %>
+<%= turbo_frame_tag 'middle-column' do%>
+  <div class="level">
+    <div class="level-left">
+      <%= link_to "\u2190 Back to posts", posts_path %>
+    </div>
+  </div>
+  
+  <% if flash[:notice] %>
+    <div><%= flash[:notice] %></div>
   <% end %>
-<% elsif @friendship %>
-  <% @friendship.errors.full_messages.each do |msg| %>
-    <%= msg %>
-  <% end %>
-<% end %>
 
-<%= render @users %>
+  <% if @friend_request %>
+    <% @friend_request.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  <% elsif @friendship %>
+    <% @friendship.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  <% end %>
+
+  <h1 class="title">All Users</h1>
+  <%= render @users %>
+<% end %>

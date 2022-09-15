@@ -1,0 +1,8 @@
+<div class="box">
+  <h1 class="subtitle">Friends</h1>
+  <% current_user.friends.each do |friend| %>
+    <%= render partial: 'users/friends/friend', locals: { user: friend } %>
+    <hr>
+  <% end %>
+  <%= link_to 'Find Friends', users_path, data: { turbo_frame: 'middle-column' } %>
+</div>

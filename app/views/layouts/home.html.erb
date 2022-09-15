@@ -21,14 +21,7 @@
           <% end %>
         </div>
         <div class="column">
-          <div class="box">
-            <h1 class="subtitle">Friends</h1>
-            <% current_user.friends.each do |friend| %>
-              <%= render partial: 'users/friend', locals: { user: friend } %>
-              <hr>
-            <% end %>
-            <%= link_to 'Find Friends', users_path %>
-          </div>
+          <%= render 'users/friends/index' %>
         </div>
       </div>
     </section>
