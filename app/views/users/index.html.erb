@@ -4,10 +4,6 @@
       <%= link_to "\u2190 Back to posts", posts_path %>
     </div>
   </div>
-  
-  <% if flash[:notice] %>
-    <div><%= flash[:notice] %></div>
-  <% end %>
 
   <% if @friend_request %>
     <% @friend_request.errors.full_messages.each do |msg| %>

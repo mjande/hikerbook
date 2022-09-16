@@ -6,11 +6,12 @@ class FriendRequestsController < ApplicationController
   def create
     if @friend_request.save
       respond_to do |format|
-        format.html { redirect_to users_path, notice: 'Your friend request was sent!' }
-        format.turbo_stream { redirect_to users_path, notice: 'Your friend request was sent!' }
+        flash[:success] = 'Your friend request was sent!'
+        format.html { redirect_to users_path }
+        format.turbo_stream { redirect_to users_path }
       end
     else
-      flash.now[:alert] = 'Something went wrong'
+      flash.now[:error] = 'Something went wrong'
 
       @users = User.all
       render template: 'users/index', status: :unprocessable_entity
@@ -19,13 +20,15 @@ class FriendRequestsController < ApplicationController
 
   def destroy
     @friend_request = FriendRequest.find(params[:id])
+
     if @friend_request.destroy
       respond_to do |format|
-        format.html { redirect_to users_path, notice: 'The friend request was ignored!' }
-        format.turbo_stream { redirect_to users_path, notice: 'The friend request was ignored!' }
+        flash[:success] = 'The friend request was ignored!'
+        format.html { redirect_to users_path }
+        format.turbo_stream { redirect_to users_path }
       end
     else
-      flash.now[:alert] = 'Something went wrong'
+      flash.now[:error] = 'Something went wrong'
 
       @users = User.all
       render template: 'users/index', status: :unprocessable_entity

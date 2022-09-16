@@ -7,13 +7,13 @@ class FriendshipsController < ApplicationController
   def create
     if @friendship.save
       respond_to do |format|
-        flash[:notice] = "You and #{@friendship.user2.username} are now friends!"
+        flash[:success] = "You and #{@friendship.user2.username} are now friends!"
 
         format.html { redirect_to users_path }
-        format.turbo_stream { redirect_to users_path }
+        format.turbo_stream
       end
     else
-      flash.now[:alert] = 'Something went wrong'
+      flash.now[:error] = 'Something went wrong'
       render template: 'users/index', status: :unprocessable_entity
     end
   end
@@ -23,11 +23,12 @@ class FriendshipsController < ApplicationController
 
     if @friendship.destroy
       respond_to do |format|
-        format.html { redirect_to users_path, notice: 'You are no longer friends!' }
-        format.turbo_stream { redirect_to users_path, notice: 'You are no longer friends!' }
+        flash[:success] = 'You are no longer friends!'
+        format.html { redirect_to users_path }
+        format.turbo_stream
       end
     else
-      flash.now[:notice] = 'Something went wrong'
+      flash.now[:error] = 'Something went wrong'
       render template: 'users/index', status: :unprocessable_entity
     end
   end

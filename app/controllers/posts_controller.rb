@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.where(user: current_user.friends).or(Post.where(user: current_user)).order('created_at')
+    @posts = Post.where(user: current_user.friends).or(Post.where(user: current_user)).order(created_at: :desc)
     render layout: 'home'
   end
 
@@ -15,13 +15,13 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash[:success] = 'Post successfully created'
+      flash[:success] = 'Post was successfully created'
       respond_to do |format|
         format.html { redirect_to root_path }
         format.turbo_stream
       end
     else
-      flash.now[:notice] = 'Something went wrong'
+      # Error messages will be displayed above _form, rather than in the flash hash.
       render 'new', status: :unprocessable_entity
     end
   end
@@ -30,12 +30,12 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success] = "Post was successfully updated"
+      flash[:success] = 'Post was successfully updated'
       respond_to do |format|
         format.html { redirect_to posts_path }
       end
     else
-      flash.now[:notice] = "Something went wrong"
+      # Error messages will be displayed above _form, rather than in the flash hash.
       render 'edit', status: :unprocessable_entity
     end
   end
@@ -48,10 +48,9 @@ class PostsController < ApplicationController
         format.turbo_stream
       end
     else
-      flash.now[:error] = 'Something went wrong'
-      redirect_to posts_path
+      flash.now[:error] = 'Something went wrong!'
+      render posts_path, status: :unprocessable_entity
     end
-    
   end
 
   private
