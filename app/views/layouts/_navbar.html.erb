@@ -8,6 +8,10 @@
     <div class="navbar-end">
       <% if user_signed_in? %>
         <div class="navbar-item">
+          <%= link_to 'Edit Account', edit_user_registration_path, class: 'button is-white' %>
+        </div>
+        
+        <div class="navbar-item">
           <%= button_to "Logout", destroy_user_session_path, class: "button is-white", method: :delete %>
         </div>
       <% end %>
