@@ -1,7 +1,10 @@
 <% flash.each do |type, msg| %>
   <% if type == 'success' %>
-    <div class="level has-background-success has-text-white-bis p-2 pl-4">
-      <%= msg %>
+    <div class="level is-mobile has-background-success has-text-white-bis p-2 pl-4" data-controller="notification">
+      <div class="level-left"><%= msg %></div>
+      <div class="level-right">
+        <button class="delete" data-action="notification#delete"></button>
+      </div>
     </div>
   <% elsif type == :error %>
     <div class="level has-background-danger has-text-white-bis p-2 pl-4">

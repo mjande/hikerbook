@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: :create
-  before_action :set_users, only: [:create, :destroy]
+  before_action :build_friendship, only: :create
+  before_action :set_friendship, only: :destroy
+  before_action :set_friend, only: :destroy
+  before_action :set_users, only: %i[create destroy]
 
   def create
     if @friendship.save
@@ -19,8 +21,6 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = Friendship.find(params[:id])
-
     if @friendship.destroy
       respond_to do |format|
         flash[:success] = 'You are no longer friends!'
@@ -35,8 +35,16 @@ class FriendshipsController < ApplicationController
 
   private
 
-  def set_friendship
+  def build_friendship
     @friendship = Friendship.new(user1_id: current_user.id, user2_id: params[:user2])
+  end
+
+  def set_friendship
+    @friendship = Friendship.find(params[:id])
+  end
+
+  def set_friend
+    @friend = @friendship.user1 == current_user ? @friendship.user2 : @friendship.user1
   end
 
   def set_users

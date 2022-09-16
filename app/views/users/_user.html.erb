@@ -1,34 +1,36 @@
-<div class="box" id="<%= dom_id(user) %>">
-  <div class="media is-flex is-align-items-center">
-    
-    <div class="media-left">
-      <figure class='image is-48x48'>
-        <img class='is-rounded'src='https://picsum.photos/48/48'>
-      </figure>
-    </div>
+<%= turbo_frame_tag "#{dom_id(user)}_card" do %>
+  <div class="box" id="<%= dom_id(user) %>">
+    <div class="media is-flex is-align-items-center">
+      
+      <div class="media-left">
+        <figure class='image is-48x48'>
+          <img class='is-rounded'src='https://picsum.photos/48/48'>
+        </figure>
+      </div>
 
-    <div class="media-content">
-      <strong><%= user.username %></strong>
-      <% if current_user.friendship_with(user) %>
-        <div>Friends</div>
-      <% elsif current_user.received_request_from(user) %>
-        <div>Sent you a friend request!</div>
-      <% end %>
-    </div>
+      <div class="media-content">
+        <strong><%= user.username %></strong>
+        <% if current_user.friendship_with(user) %>
+          <div>Friends</div>
+        <% elsif current_user.received_request_from(user) %>
+          <div>Sent you a friend request!</div>
+        <% end %>
+      </div>
 
-    <div class="media-right">
-      <% if current_user.friendship_with(user) %>
-        <%= button_to "Remove Friend", current_user.friendship_with(user), method: :delete, class: 'button has-background-danger has-text-white-bis' %>
-      <% elsif current_user.received_request_from(user) %>
-        <div class="level is-mobile">
-          <%= button_to "Add Friend", Friendship.new, params: { user2: user }, class: 'button mr-1' %>
-          <%= button_to "Ignore", current_user.received_request_from(user), method: :delete, class: 'button ml-1 has-background-danger has-text-white-bis' %>
-        </div>
-      <% elsif current_user.sent_request_to(user) %>
-        <div>Friend Request Sent!</div>
-      <% else %>
-        <%= button_to "Send Friend Request", FriendRequest.new, params: { receiver: user}, class: 'button' %>
-      <% end %>
+      <div class="media-right">
+        <% if current_user.friendship_with(user) %>
+          <%= button_to "Remove Friend", current_user.friendship_with(user), method: :delete, class: 'button has-background-danger has-text-white-bis' %>
+        <% elsif current_user.received_request_from(user) %>
+          <div class="level is-mobile">
+            <%= button_to "Add Friend", Friendship.new, params: { user2: user }, class: 'button mr-1' %>
+            <%= button_to "Ignore", current_user.received_request_from(user), method: :delete, class: 'button ml-1 has-background-danger has-text-white-bis' %>
+          </div>
+        <% elsif current_user.sent_request_to(user) %>
+          <div>Friend Request Sent!</div>
+        <% else %>
+          <%= button_to "Send Friend Request", FriendRequest.new, params: { receiver: user}, class: 'button' %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

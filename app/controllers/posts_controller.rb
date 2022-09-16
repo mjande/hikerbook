@@ -15,10 +15,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash[:success] = 'Post was successfully created'
       respond_to do |format|
-        format.html { redirect_to root_path }
-        format.turbo_stream
+        format.html { redirect_to root_path, flash[:success] = 'Post was successfully created' }
+        format.turbo_stream { flash.now[:success] = 'Post was successfully created' }
       end
     else
       # Error messages will be displayed above _form, rather than in the flash hash.
@@ -30,9 +29,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success] = 'Post was successfully updated'
       respond_to do |format|
-        format.html { redirect_to posts_path }
+        format.html { redirect_to posts_path, flash[:success] = 'Post was successfully updated' }
+        format.turbo_stream { flash.now[:success] = 'Post was successfully updated' }
       end
     else
       # Error messages will be displayed above _form, rather than in the flash hash.
@@ -42,10 +41,10 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      flash[:success] = 'Post was successfully deleted.'
+      
       respond_to do |format|
-        format.html { redirect_to posts_path }
-        format.turbo_stream
+        format.html { redirect_to posts_path, flash[:success] = 'Post was successfully deleted' }
+        format.turbo_stream { flash.now[:success] = 'Post was successfully deleted' }
       end
     else
       flash.now[:error] = 'Something went wrong!'
