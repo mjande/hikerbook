@@ -9,7 +9,7 @@
   <% end %>
 
   <div class="box">
-    <%= form_with model: post do |f| %>
+    <%= form_with model: post, id: 'form' do |f| %>
       <div class="field is-horizontal">
         <div class="field mr-5">
           <%= f.label :trail, 'Trail Name:', class: 'field-label' %>

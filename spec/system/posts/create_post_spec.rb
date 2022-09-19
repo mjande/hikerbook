@@ -7,13 +7,14 @@ RSpec.describe 'create post', type: :system do
 
   context 'with valid inputs' do
     it 'successfully saves post' do
+      expect(Post.count).to eq(0)
+      
       sign_in user
       visit posts_path
 
       click_on 'New post'
-      within('h1') do
-        expect(page).to have_content('New Post')
-      end
+
+      expect(page).to have_selector('form')
 
       fill_in 'post[trail]', with: 'Blue Loop'
       fill_in 'post[park]', with: 'Olympic National Park'
@@ -25,6 +26,8 @@ RSpec.describe 'create post', type: :system do
         expect(page).to have_content('Olympic National Park')
         expect(page).to have_content('Trail description')
       end
+
+      expect(Post.count).to eq(1)
     end
   end
 
@@ -34,13 +37,12 @@ RSpec.describe 'create post', type: :system do
       visit posts_path
 
       click_on 'New post'
-      within('h1') do
-        expect(page).to have_content('New Post')
-      end
+
+      expect(page).to have_selector('form')
 
       click_on 'Create Post'
 
-      expect(page).to have_content('New Post')
+      expect(page).to have_selector('form')
       expect(page).to have_content("Trail can't be blank")
       expect(page).to have_content("Park can't be blank")
     end

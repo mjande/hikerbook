@@ -6,7 +6,7 @@ class FriendRequestsController < ApplicationController
   def create
     if @friend_request.save
       respond_to do |format|
-        format.html { redirect_to users_path, flash[:success] = 'Your friend request was sent!' }
+        format.html { redirect_to users_path, flash: { success: 'Your friend request was sent!' } }
         format.turbo_stream { flash.now[:success] = 'Your friend request was sent!' }
       end
     else
@@ -22,7 +22,7 @@ class FriendRequestsController < ApplicationController
 
     if @friend_request.destroy
       respond_to do |format|
-        format.html { redirect_to users_path, flash[:success] = 'The friend request was ignored!' }
+        format.html { redirect_to users_path, flash: { success: 'The friend request was ignored!' } }
         format.turbo_stream { flash.now[:success] = 'The friend request was ignored!' }
       end
     else
@@ -32,7 +32,6 @@ class FriendRequestsController < ApplicationController
       render template: 'users/index', status: :unprocessable_entity
     end
   end
-  
 
   private
 

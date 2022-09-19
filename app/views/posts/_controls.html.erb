@@ -1,0 +1,51 @@
+<%= turbo_frame_tag "#{dom_id(post)}_controls" do %>
+  <div class="level is-mobile">
+    <div class="level-left">
+      <div class="level-item">
+        <div id='likes_count'><%= pluralize(post.likes.count, 'Like') %></div>
+      </div>
+
+      <div class="level-item">
+      
+        <% if post.liked_by(user) %>
+          <%= button_to post_like_path(post, post.liked_by(user)), method: :delete,
+                                                            data: { turbo_method: :delete },
+                                                            class: 'remove-btn-style',
+                                                            id: 'unlike' do %>
+            <span class="icon">
+              <i class="fa-solid fa-heart"></i>
+            </span>
+          <% end %>
+        <% else %>
+          <%= button_to post_likes_path(post, Like.new), params: { user: user }, class: 'remove-btn-style', id: 'like' do %>
+            <span class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </span>
+          <% end %>
+        <% end %>
+
+        <% if post.user == user %>
+          <%= link_to edit_post_path(post), id: 'edit' do %>
+            <span class="icon">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </span>
+          <% end %>
+
+          <%= button_to post_path(post), method: :delete, 
+                                        data: { turbo_method: :delete }, 
+                                        class: 'remove-btn-style',
+                                        id: 'delete' do %>
+            <span class="icon">
+              <i class="fa-solid fa-trash"></i>
+            </span>
+          <% end %>
+
+        <% else %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

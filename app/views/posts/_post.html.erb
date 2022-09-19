@@ -18,16 +18,12 @@
       </div>
 
       <div class="pb-2"><%= post.description %></div>
-      <div><%= post.time %></div>
+
+      <div class=""><%= post.time %></div>
+
+      <hr class="m-2">
+
+      <%= render partial: 'controls', locals: { post: post, user: user } %>
     </div>
-    <% if post.user == user %>
-      <div class="card-footer">
-        <%= link_to 'Edit', edit_post_path(post), class: 'card-footer-item' %>
-        <%= button_to 'Delete', post_path(post), method: :delete, 
-                                                 data: { turbo_method: :delete }, 
-                                                 form_class: 'card-footer-item', 
-                                                 class: 'remove-btn-style' %>
-      </div>
-    <% end %>
   </div>
 <% end %>

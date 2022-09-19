@@ -18,13 +18,13 @@ RSpec.describe 'add friend', type: :system do
       click_on 'Add Friend'
     end
 
-    expect(friend.friends).to include(user)
-    expect(user.reload.friends).to include(friend)
-
     expect(page).to have_content("You and #{friend.username} are now friends!")
 
     within("##{dom_id(friend)}") do
       expect(page).to have_content('Friends')
     end
+
+    expect(friend.reload.friends).to include(user)
+    expect(user.reload.friends).to include(friend)
   end
 end

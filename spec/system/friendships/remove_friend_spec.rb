@@ -15,10 +15,10 @@ RSpec.describe 'remove friend', type: :system do
     visit users_path
 
     within("##{dom_id(friend)}") do
-      click_on "Remove Friend"
+      click_on 'Remove Friend'
     end
 
-    expect(user.friendship_with(friend)).to be_falsey
     expect(page).to have_content('You are no longer friends!')
+    expect(user.friendship_with(friend)).to be_falsey
   end
 end

@@ -18,7 +18,7 @@ RSpec.describe 'ignore friend request', type: :system do
       click_on 'Ignore'
     end
 
-    expect(user.received_request_from(friend)).to be_falsey
     expect(page).to have_content('The friend request was ignored!')
+    expect(user.received_request_from(friend)).to be_falsey
   end
 end
