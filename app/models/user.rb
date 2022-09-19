@@ -41,6 +41,8 @@ class User < ApplicationRecord
                              dependent: :destroy
   has_many :friends_as2, through: :friendships_as2, source: :user1
 
+  has_many :likes, dependent: :destroy
+
   def friends
     friends_as1 + friends_as2
   end
