@@ -10,8 +10,8 @@ class Post < ApplicationRecord
   has_many :liking_users, through: :likes, source: :user
 
   after_create_commit -> { broadcast_prepend_later_to [Current.user, 'posts'], target: 'posts', locals: { user: Current.user, post: self } }
-  after_update_commit -> { broadcast_replace_later_to 'posts', locals: { user: Current.user, post: self } }
-  after_destroy_commit -> { broadcast_remove_to 'posts' }
+  after_update_commit -> { broadcast_replace_later_to [Current.user, 'posts'], locals: { user: Current.user, post: self } }
+  after_destroy_commit -> { broadcast_remove_to [Current.user, 'posts'] }
 
   def time
     time_zone = ActiveSupport::TimeZone['Eastern Time (US & Canada)']
