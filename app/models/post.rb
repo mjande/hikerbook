@@ -9,9 +9,14 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
 
-  after_create_commit -> { broadcast_prepend_later_to [Current.user, 'posts'], target: 'posts', locals: { user: Current.user, post: self } }
-  after_update_commit -> { broadcast_replace_later_to [Current.user, 'posts'], locals: { user: Current.user, post: self } }
-  after_destroy_commit -> { broadcast_remove_to [Current.user, 'posts'] }
+  # User variable is set to nil to disable controls in broadcasted posts. _post
+  # and post/controls partial both depend on knowing who the current user is,
+  # but based on current implementation of Turbo Streams (which wraps the
+  # broadcasts for Active Job), there isn't a way to pass current_user to these
+  # partials effectively.
+  after_create_commit :broadcast_prepend_post
+  after_update_commit :broadcast_update_post
+  after_destroy_commit :broadcast_destroy_post
 
   def time
     time_zone = ActiveSupport::TimeZone['Eastern Time (US & Canada)']
@@ -20,5 +25,20 @@ class Post < ApplicationRecord
 
   def liked_by(user)
     likes.find_by(user:)
+  end
+
+  private
+
+  def broadcast_prepend_post
+    broadcast_prepend_later_to [Current.user, 'posts'], target: 'posts',
+                                                        locals: { user: nil, post: self }
+  end
+
+  def broadcast_update_post
+    broadcast_replace_later_to [Current.user, 'posts'], locals: { user: nil, post: self }
+  end
+
+  def broadcast_destroy_post
+    broadcast_remove_to [Current.user, 'posts']
   end
 end

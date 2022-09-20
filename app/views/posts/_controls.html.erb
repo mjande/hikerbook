@@ -16,7 +16,7 @@
             </span>
           <% end %>
         <% else %>
-          <%= button_to post_likes_path(post, Like.new), params: { user: user }, class: 'remove-btn-style', id: 'like' do %>
+          <%= button_to post_likes_path(post, Like.new), class: 'remove-btn-style', id: 'like' do %>
             <span class="icon">
               <i class="fa-regular fa-heart"></i>
             </span>
@@ -24,7 +24,8 @@
         <% end %>
 
         <% if post.user == user %>
-          <%= link_to edit_post_path(post), id: 'edit' do %>
+          <%= link_to edit_post_path(post), id: 'edit', 
+                                            data: { turbo_frame: dom_id(post) } do %>
             <span class="icon">
               <i class="fa-solid fa-pen-to-square"></i>
             </span>

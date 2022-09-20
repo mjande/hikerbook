@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   before_action :build_like, only: :create
   before_action :set_like, only: :destroy
+  before_action :set_posts
 
   def create
     if @like.save
@@ -10,7 +11,7 @@ class LikesController < ApplicationController
       end
     else
       flash.now[:error] = 'Something went wrong'
-      render 'new'
+      render 'posts/index', status: :unprocessable_entity
     end
   end
 
@@ -22,7 +23,7 @@ class LikesController < ApplicationController
       end
     else
       flash.now[:error] = 'Something went wrong'
-      redirect_to posts_path
+      render 'posts/index', status: :unprocessable_entity
     end
   end
 
@@ -30,11 +31,15 @@ class LikesController < ApplicationController
 
   def build_like
     @post = Post.find(params[:post_id])
-    @like = @post.likes.build(user_id: params[:user])
+    @like = @post.likes.build(user: current_user)
   end
 
   def set_like
     @post = Post.find(params[:post_id])
     @like = Like.find(params[:id])
+  end
+
+  def set_posts
+    @posts = Post.all
   end
 end

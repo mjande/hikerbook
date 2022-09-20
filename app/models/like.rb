@@ -1,7 +1,6 @@
 class Like < ApplicationRecord
   after_commit :update_like_count
 
-
   belongs_to :post
   belongs_to :user
 
