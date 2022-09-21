@@ -9,4 +9,8 @@
     <strong><%= comment.user.username %></strong>
     <div><%= comment.body %></div>
   </div>
+
+  <div class="media-right">
+    <%= link_to 'Edit', edit_post_comment_path(post, comment)%>
+  </div>
 </div>

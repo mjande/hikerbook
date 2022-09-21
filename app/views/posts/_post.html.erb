@@ -27,7 +27,7 @@
   </div>
 
   <div class='p-4 py-5'>
-    <%= render comments %>
+    <%= render comments, post: post %>
 
     <% if (comments.count < post.comments.count) %>
       <%= link_to 'See more comments', post_comments_path(post) %>

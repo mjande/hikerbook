@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
   def index; end
 
   def new
-    @comments = @post.comments.all
     @comment = Comment.new(post_id: params[:post_id])
   end
 
@@ -16,6 +15,20 @@ class CommentsController < ApplicationController
       redirect_to post_comments_path(@post)
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+
+    if @comment.update(comment_params)
+      redirect_to post_comments_path(@post)
+    else
+      render 'edit'
     end
   end
 
