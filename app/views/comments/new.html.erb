@@ -1,0 +1,5 @@
+<div class="title">New Comment</div>
+
+<%= render partial: 'comments/form', locals: { post: @post, comment: @comment }%>
+
+<%= render partial: @post, locals: { user: current_user, comments: @comments } %>

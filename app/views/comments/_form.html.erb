@@ -1,0 +1,19 @@
+<% if comment.errors.any? %>
+  <% comment.errors.full_messages.each do |msg| %>
+    <div class="notification is-danger" data-controller="notification">
+      <button class="delete" data-action="notification#delete"></button>
+      <%= msg %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="box">
+  <%= form_with model: [post, comment], id: 'form' do |f| %>
+    <div class="field">
+      <%= f.label :body, 'Comment:' %>
+      <div class="control"><%= f.text_area :body, class: 'textarea', rows: 3 %></div>
+    </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit class: 'button' %>
+  <% end %>
+</div>

@@ -32,6 +32,7 @@
     <% if (comments.count < post.comments.count) %>
       <%= link_to 'See more comments', post_comments_path(post) %>
     <% end %>
+    <%= link_to 'Leave a comment', new_post_comment_path(post) %>
   </div>
 </div>
 <% end %>
