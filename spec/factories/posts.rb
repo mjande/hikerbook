@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :post do
-    association :user
-    trail { 'Example Loop' }
+    user factory: :friend
+    trail { 'Example Trail' }
     park { 'Example National Park' }
-    description { 'Test' }
+    description { 'This is an example.' }
   end
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'liking post', type: :system do
+RSpec.describe 'like post', type: :system do
   include ActionView::RecordIdentifier
 
   let!(:user) { create(:user) }
