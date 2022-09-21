@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_post
+  before_action :set_comment, only: %i[edit update destroy]
   before_action :set_comments
 
   def index; end
@@ -18,13 +19,9 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-    @comment = Comment.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @comment = Comment.find(params[:id])
-
     if @comment.update(comment_params)
       redirect_to post_comments_path(@post)
     else
@@ -32,10 +29,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    if @comment.destroy
+      redirect_to post_comments_path(@post)
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to post_comments_path(@post)
+    end
+  end
+
   private
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 
   def set_comments
