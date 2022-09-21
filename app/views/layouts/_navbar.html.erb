@@ -1,14 +1,24 @@
-<div class="navbar">
-  <div class="navbar-menu is-active">
-    <div class="navbar-start">
-      <div class="navbar-item">
-        <%= link_to "Home", posts_path, class: 'button is-white' %>
-      </div>
-    </div>
-    <div class="navbar-end">
+<div class="navbar" data-controller='navbar' data-navbar-active-class='is-active'>
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/posts">
+      <span class="icon has-text-white">
+        <i class="fa-solid fa-person-hiking fa-lg"></i>
+      </span>
+     <div class="title has-text-white ml-1">HikerBook</div>
+    </a>
+
+    <a class="navbar-burger has-text-white" data-action='navbar#show'>
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu" data-navbar-target='menu'>
+    <div class="navbar-end is-flex is-align-items-center">
       <% if user_signed_in? %>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class='navbar-link is-arrowless button is-white mt-2 mr-3'>
+          <a class='navbar-link is-arrowless button is-white ml-5'>
             <%= current_user.username %>
           </a>
           <div class="navbar-dropdown is-right">

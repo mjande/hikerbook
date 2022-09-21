@@ -43,5 +43,14 @@ $danger: $lava;
   cursor:pointer;
 }
 
+@media screen and (min-width: 1024px) {
+  .navbar-item.has-dropdown {
+    margin-right: 0.5rem
+  }
+  .navbar-dropdown {
+    margin-top: 0.37rem;
+  }
+}
+
 
 @import 'bulma/bulma';
