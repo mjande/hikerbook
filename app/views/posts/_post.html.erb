@@ -1,29 +1,37 @@
 <%= turbo_frame_tag dom_id(post) do %>
-  <div class="post card my-5">
-    <div class="card-content">
-      <div class="media">
-        <div class="media-left">
-          <figure class='image is-48x48'>
-            <img class='is-rounded'src='https://picsum.photos/48/48'>
-          </figure>
-        </div>
-
-        <div class="media-content">
-          <strong><%= link_to post.user.username, user_path(post.user), class: "has-text-black", data: { turbo_frame: 'middle-column' } %></strong>
-          <div>
-            <%= link_to post.trail, post_path(post), class: 'has-text-black' %> at 
-            <%= post.park %>
-          </div>
-        </div>
+<div class="post box my-5 p-0">
+  <div class="box mb-0">
+    <div class="media">
+      <div class="media-left">
+        <figure class='image is-48x48'>
+          <img class='is-rounded'src='https://picsum.photos/48/48'>
+        </figure>
       </div>
 
-      <div class="pb-2"><%= post.description %></div>
-
-      <div class=""><%= post.time %></div>
-
-      <hr class="m-2">
-
-      <%= render partial: 'posts/controls', locals: { post: post, user: user } %>
+      <div class="media-content">
+        <strong><%= link_to post.user.username, user_path(post.user), class: "has-text-black", data: { turbo_frame: 'middle-column' } %></strong>
+        <div>
+          <%= link_to post.trail, post_path(post), class: 'has-text-black' %> at 
+          <%= post.park %>
+        </div>
+      </div>
     </div>
+
+    <div class="p-4"><%= post.description %></div>
+
+    <div class=""><%= post.time %></div>
+
+    <hr class="m-2">
+
+    <%= render partial: 'posts/controls', locals: { post: post, user: user } %>
   </div>
+
+  <div class='p-4 py-5'>
+    <%= render comments %>
+
+    <% if (comments.count < post.comments.count) %>
+      <%= link_to 'See more comments', post_comments_path(post) %>
+    <% end %>
+  </div>
+</div>
 <% end %>

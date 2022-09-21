@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.where(user: current_user.friends).or(Post.where(user: current_user)).order(created_at: :desc).includes(:likes)
+    @posts = Post.where(user: current_user.friends).or(Post.where(user: current_user)).order(created_at: :desc).includes(:likes, :comments, comments: :user)
     render layout: 'home'
   end
 
