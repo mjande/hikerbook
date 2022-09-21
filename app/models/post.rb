@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
+  has_many :comments, dependent: :destroy
 
   # User variable is set to nil to disable controls in broadcasted posts. _post
   # and post/controls partial both depend on knowing who the current user is,
