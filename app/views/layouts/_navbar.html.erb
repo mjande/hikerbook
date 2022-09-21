@@ -7,12 +7,23 @@
     </div>
     <div class="navbar-end">
       <% if user_signed_in? %>
-        <div class="navbar-item">
-          <%= link_to 'Edit Account', edit_user_registration_path, class: 'button is-white' %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class='navbar-link is-arrowless button is-white mt-2 mr-3'>
+            <%= current_user.username %>
+          </a>
+          <div class="navbar-dropdown is-right">
+            <div class="navbar-item">
+              <%= link_to 'Edit Account', edit_user_registration_path, class: 'button is-white' %>
+            </div>
+            
+            <div class="navbar-item">
+              <%= button_to "Logout", destroy_user_session_path, class: "button is-white", method: :delete %>
+            </div>
+          </div>
         </div>
-        
+      <% else %>
         <div class="navbar-item">
-          <%= button_to "Logout", destroy_user_session_path, class: "button is-white", method: :delete %>
+          <%= link_to 'Login', new_user_session_path, class: 'button is-white' %>
         </div>
       <% end %>
     </div>
