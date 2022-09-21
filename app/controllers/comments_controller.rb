@@ -13,7 +13,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
 
     if @comment.save
-      redirect_to post_comments_path(@post)
+      respond_to do |format|
+        format.html { redirect_to post_comments_path(@post) }
+        format.turbo_stream
+      end
     else
       render 'new'
     end

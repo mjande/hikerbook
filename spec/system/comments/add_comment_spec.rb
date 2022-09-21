@@ -8,6 +8,10 @@ RSpec.describe 'add comment', type: :system do
   let!(:user) { create(:user) }
   let!(:post) { create(:post) }
 
+  before do
+    Friendship.create(user1: user, user2: post.user)
+  end
+
   context 'with valid inputs' do
     it 'adds comments to post' do
       expect(Comment.count).to eq(0)
@@ -15,14 +19,14 @@ RSpec.describe 'add comment', type: :system do
       sign_in user
       visit posts_path
 
-      within(dom_id(post)) do
+      within("##{dom_id(post)}") do
         expect(page).to have_content('Example Trail')
-        click_on 'Comment'
-        fill_in 'This is a comment example'
-        click on 'Submit'
-        expect(page).to have_content('This is a comment example')
+        click_on 'Leave a comment'
       end
 
+      fill_in 'comment[body]', with: 'This is a comment example'
+      click_on 'Submit'
+      expect(page).to have_content('This is a comment example')
       expect(Comment.count).to eq(1)
     end
   end
@@ -34,14 +38,14 @@ RSpec.describe 'add comment', type: :system do
       sign_in user
       visit posts_path
 
-      within(dom_id(post)) do
+      within("##{dom_id(post)}") do
         expect(page).to have_content('Example Trail')
-        click_on 'Comment'
-        click on 'Submit'
-        expect(page).to have_content("Comment body can't be blank!")
+        click_on 'Leave a comment'
       end
 
-      expect(Comment.count).to eq(1)
+      click_on 'Submit'
+      expect(page).to have_content("Body can't be blank")
+      expect(Comment.count).to eq(0)
     end
   end
 end
