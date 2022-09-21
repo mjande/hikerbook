@@ -50,7 +50,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#friends' do
-    let(:friend1) { create(:user, username: 'Friend #1', email: 'friend1@example.com') }
+    let(:friend1) { create(:friend) }
     let(:friend2) { create(:user, username: 'Friend #2', email: 'friend2@example.com') }
     let(:friend3) { create(:user, username: 'Friend #3', email: 'friend3@example.com') }
 
@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#sent_request_to' do
-    let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
+    let(:friend) { create(:friend) }
 
     it 'returns request if the current user has already sent a request to that user' do
       request = FriendRequest.create(sender: user, receiver: friend)
@@ -86,7 +86,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#received_request_from' do
-    let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
+    let(:friend) { create(:friend) }
 
     it 'returns request if the current user received a request from that user' do
       request = FriendRequest.create(sender: friend, receiver: user)
@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
   end
 
   describe '#friendship_with' do
-    let(:friend) { create(:user, username: 'Friend', email: 'friend@example.com') }
+    let(:friend) { create(:friend) }
 
     it 'returns friendship if current user (as user1) is friends with user' do
       friendship = Friendship.create(user1: user, user2: friend)
