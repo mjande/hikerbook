@@ -7,7 +7,6 @@
   <% end %>
 <% end %>
 
-<strong><%= comment.user ? comment.user.username : 'New comment:' %></strong>
 <%= form_with model: [comment.post, comment], id: 'form' do |f| %>
   <div class="field">
     <div class="control"><%= f.text_area :body, class: 'textarea', rows: 2 %></div>

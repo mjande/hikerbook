@@ -1,7 +1,16 @@
 <div class="title">Edit Comment</div>
 
-<%= turbo_frame_tag "#{dom_id(@post)}_#{dom_id(@comment)}" do %>
-  <%= render partial: 'comments/form', locals: { comment: @comment }%>
+<%= turbo_frame_tag "#{dom_id(@post)}_#{dom_id(@comment)}", class: 'media px-3' do %>
+  <div class="media-left">
+    <figure class='image is-48x48'>
+      <img class='is-rounded'src='https://picsum.photos/48/48'>
+    </figure>
+  </div>
+
+  <div class="media-content">
+    <strong><%= @comment.user.username %></strong>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+  </div>
 <% end %>
 
 <%= render partial: @post, locals: { user: current_user, comments: @comments } %>

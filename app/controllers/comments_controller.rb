@@ -38,7 +38,10 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      redirect_to post_path(@post)
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.turbo_stream
+      end
     else
       flash[:error] = 'Something went wrong'
       redirect_to post_path(@post)

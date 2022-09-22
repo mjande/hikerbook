@@ -1,4 +1,4 @@
-<div class="media px-3">
+<%= turbo_frame_tag "#{dom_id(comment.post)}_#{dom_id(comment)}", class: 'media px-3' do %>
   <div class="media-left">
     <figure class='image is-48x48'>
       <img class='is-rounded'src='https://picsum.photos/48/48'>
@@ -6,16 +6,12 @@
   </div>
 
   <div class="media-content">
-    
-    
-      <strong><%= comment.user.username %></strong>
-      <%= turbo_frame_tag "#{dom_id(comment.post)}_#{dom_id(comment)}" do %>
-      <div><%= comment.body %></div>
-    <% end %>
+    <strong><%= comment.user.username %></strong>
+    <div><%= comment.body %></div>
   </div>
 
   <div class="media-right">
-    <div><%= link_to 'Edit', edit_post_comment_path(comment.post, comment), data: { turbo_frame: "#{dom_id(comment.post)}_#{dom_id(comment)}" }%></div>
-    <div><%= button_to 'Delete', post_comment_path(comment.post, comment), method: :delete, class: 'remove-btn-style' %></div>
+    <div><%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %></div>
+    <div><%= button_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: { turbo_method: :delete }, class: 'remove-btn-style' %></div>
   </div>
-</div>
+<% end %>

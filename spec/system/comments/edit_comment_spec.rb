@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'edit comment', type: :system do
+RSpec.describe 'edit comment', type: :system, js: true do
   include ActionView::RecordIdentifier
 
   let!(:comment) { create(:comment) }
@@ -16,7 +16,7 @@ RSpec.describe 'edit comment', type: :system do
       within("##{dom_id(comment.post)}_#{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
-        fill_in 'comment[body]', with: 'This is an updated comment example'
+        fill_in 'comment_body', with: 'This is an updated comment example'
         click_on 'Submit'
         expect(page).to have_content('This is an updated comment example')
       end
@@ -31,7 +31,7 @@ RSpec.describe 'edit comment', type: :system do
       within("##{dom_id(comment.post)}_#{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
-        fill_in 'comment[body]', with: ''
+        fill_in 'comment_body', with: ''
         click_on 'Submit'
         expect(page).to have_content("Body can't be blank")
       end
