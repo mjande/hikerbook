@@ -1,5 +1,7 @@
 <div class="title">New Comment</div>
 
-<%= render partial: 'comments/form', locals: { post: @post, comment: @comment } %>
+<%= turbo_frame_tag "#{dom_id(@post)}_#{dom_id(Comment.new)}" do %>  
+  <%= render 'comments/form', comment: @comment %>
+<% end %>
 
 <%= render partial: @post, locals: { user: current_user, comments: @comments } %>

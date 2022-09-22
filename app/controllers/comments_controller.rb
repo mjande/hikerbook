@@ -17,6 +17,7 @@ class CommentsController < ApplicationController
         format.turbo_stream
       end
     else
+      # Error messages will be displayed above _form, rather than in the flash hash.
       render 'new'
     end
   end
@@ -25,8 +26,12 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to post_path(@post)
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.turbo_stream
+      end
     else
+      # Error messages will be displayed above _form, rather than in the flash hash.
       render 'edit'
     end
   end

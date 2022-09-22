@@ -1,23 +1,17 @@
-<div class="box">
-  <%= turbo_frame_tag "#{dom_id(post)}_#{dom_id(Comment.new)}" do %>
-  
-    <% if comment.errors.any? %>
-      <% comment.errors.full_messages.each do |msg| %>
-        <div class="notification is-danger" data-controller="notification">
-          <button class="delete" data-action="notification#delete"></button>
-          <%= msg %>
-        </div>
-      <% end %>
-    <% end %>
-    
-    <%= form_with model: [post, comment], id: 'form' do |f| %>
-      <div class="field">
-        <%= f.label :body, 'Comment:' %>
-        <div class="control"><%= f.text_area :body, class: 'textarea', rows: 2 %></div>
-      </div>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit 'Submit', class: 'button' %>
-    <% end %>
-
+<% if comment.errors.any? %>
+  <% comment.errors.full_messages.each do |msg| %>
+    <div class="notification is-danger" data-controller="notification">
+      <button class="delete" data-action="notification#delete"></button>
+      <%= msg %>
+    </div>
   <% end %>
-</div>
+<% end %>
+
+<strong><%= comment.user ? comment.user.username : 'New comment:' %></strong>
+<%= form_with model: [comment.post, comment], id: 'form' do |f| %>
+  <div class="field">
+    <div class="control"><%= f.text_area :body, class: 'textarea', rows: 2 %></div>
+  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit 'Submit', class: 'button' %>
+<% end %>
