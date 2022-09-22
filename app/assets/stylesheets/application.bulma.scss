@@ -53,5 +53,8 @@ $button-border-color: $smoky-black;
   }
 }
 
-
 @import 'bulma/bulma';
+
+.hidden {
+  display: none;
+}
