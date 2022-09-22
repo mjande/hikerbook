@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'add comment', type: :system do
+RSpec.describe 'edit comment', type: :system do
   include ActionView::RecordIdentifier
 
   let!(:comment) { create(:comment) }
@@ -11,7 +11,7 @@ RSpec.describe 'add comment', type: :system do
   context 'with valid inputs' do
     it 'updates comments on post' do
       sign_in user
-      visit post_comments_path(comment.post)
+      visit post_path(comment.post)
 
       within("##{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')
@@ -30,7 +30,7 @@ RSpec.describe 'add comment', type: :system do
   context 'with invalid inputs' do
     it 'does not update comment and displays error message' do
       sign_in user
-      visit post_comments_path(comment.post)
+      visit post_path(comment.post)
 
       within("##{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')

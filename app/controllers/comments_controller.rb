@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_post
   before_action :set_comment, only: %i[edit update destroy]
-  before_action :set_comments
 
   def index; end
 
@@ -14,7 +13,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to post_comments_path(@post) }
+        format.html { redirect_to post_path(@post) }
         format.turbo_stream
       end
     else
@@ -26,7 +25,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to post_comments_path(@post)
+      redirect_to post_path(@post)
     else
       render 'edit'
     end
@@ -34,10 +33,10 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      redirect_to post_comments_path(@post)
+      redirect_to post_path(@post)
     else
       flash[:error] = 'Something went wrong'
-      redirect_to post_comments_path(@post)
+      redirect_to post_path(@post)
     end
   end
 
@@ -49,10 +48,6 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.find(params[:id])
-  end
-
-  def set_comments
-    @comments = @post.comments.all
   end
 
   def comment_params

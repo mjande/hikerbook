@@ -27,11 +27,11 @@
   </div>
 
   <div class='p-4 py-5'>
-    <%= render comments, post: post %>
+    <%= render post.comments.persisted, post: post %>
 
-    <% if (comments.count < post.comments.count) %>
-      <%= link_to 'See more comments', post_comments_path(post) %>
-    <% end %>
+    <%# if (comments.count < post.comments.count) %>
+      <%#= link_to 'See more comments', post_comments_path(post) %>
+    <%# end %>
     <div class="px-3 pt-3">
       <%= turbo_frame_tag dom_id(Comment.new) do %>
         <%= link_to 'Leave a comment', new_post_comment_path(post) %>

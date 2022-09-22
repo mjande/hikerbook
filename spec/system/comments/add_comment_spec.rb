@@ -17,7 +17,7 @@ RSpec.describe 'add comment', type: :system do
       expect(Comment.count).to eq(0)
 
       sign_in commenter
-      visit posts_path
+      visit post_path(post)
 
       within("##{dom_id(post)}") do
         expect(page).to have_content('Example Trail')
@@ -36,7 +36,7 @@ RSpec.describe 'add comment', type: :system do
       expect(Comment.count).to eq(0)
 
       sign_in commenter
-      visit posts_path
+      visit post_path(post)
 
       within("##{dom_id(post)}") do
         expect(page).to have_content('Example Trail')
