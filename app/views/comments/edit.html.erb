@@ -1,6 +1,6 @@
 <div class="title">Edit Comment</div>
 
-<%= turbo_frame_tag "#{dom_id(@post)}_#{dom_id(@comment)}", class: 'media px-3' do %>
+<%= turbo_frame_tag @comment.to_dom_id, class: 'media px-3' do %>
   <div class="media-left">
     <figure class='image is-48x48'>
       <img class='is-rounded'src='https://picsum.photos/48/48'>

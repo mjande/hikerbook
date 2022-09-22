@@ -16,7 +16,7 @@ RSpec.describe 'delete comment', type: :system do
     sign_in commenter
     visit posts_path
 
-    within("##{dom_id(comment.post)}_#{dom_id(comment)}") do
+    within("##{comment.to_dom_id}") do
       expect(page).to have_content('This is a comment example')
       click_on 'Delete'
     end

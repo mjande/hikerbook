@@ -1,1 +1,1 @@
-<%= turbo_stream.replace "#{dom_id(@comment.post)}_#{dom_id(@comment)}", @comment %>
+<%= turbo_stream.replace @comment.to_dom_id, @comment %>

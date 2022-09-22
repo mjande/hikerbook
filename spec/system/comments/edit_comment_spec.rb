@@ -13,7 +13,7 @@ RSpec.describe 'edit comment', type: :system, js: true do
       sign_in user
       visit post_path(comment.post)
 
-      within("##{dom_id(comment.post)}_#{dom_id(comment)}") do
+      within("##{comment.to_dom_id}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
         fill_in 'comment_body', with: 'This is an updated comment example'
@@ -28,7 +28,7 @@ RSpec.describe 'edit comment', type: :system, js: true do
       sign_in user
       visit post_path(comment.post)
 
-      within("##{dom_id(comment.post)}_#{dom_id(comment)}") do
+      within("##{comment.to_dom_id}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
         fill_in 'comment_body', with: ''

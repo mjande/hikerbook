@@ -17,6 +17,10 @@ class Comment < ApplicationRecord
   after_update_commit :broadcast_update_comment
   after_destroy_commit :broadcast_remove_comment
 
+  def to_dom_id
+    "#{dom_id(post)}_#{dom_id(self)}"
+  end
+
   private
 
   def broadcast_prepend_comment
@@ -27,12 +31,12 @@ class Comment < ApplicationRecord
 
   def broadcast_update_comment
     broadcast_replace_later_to [Current.user, 'posts'],
-                               target: "#{dom_id(post)}_#{dom_id(self)}",
+                               target: to_dom_id,
                                locals: { current_user: nil }
   end
 
   def broadcast_remove_comment
     broadcast_remove_to [Current.user, 'posts'],
-                        target: "#{dom_id(post)}_#{dom_id(self)}"
+                        target: to_dom_id
   end
 end
