@@ -1,0 +1,3 @@
+<%= turbo_stream.update "#{dom_id(@comment.post)}_#{dom_id(@comment)}" do %>
+  <div><%= @comment.body %></div>
+<% end %>

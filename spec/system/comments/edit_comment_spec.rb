@@ -13,15 +13,11 @@ RSpec.describe 'edit comment', type: :system do
       sign_in user
       visit post_path(comment.post)
 
-      within("##{dom_id(comment)}") do
+      within("##{dom_id(comment.post)}_#{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
-      end
-
-      fill_in 'comment[body]', with: 'This is an updated comment example'
-      click_on 'Submit'
-
-      within("##{dom_id(comment)}") do
+        fill_in 'comment[body]', with: 'This is an updated comment example'
+        click_on 'Submit'
         expect(page).to have_content('This is an updated comment example')
       end
     end
@@ -32,14 +28,14 @@ RSpec.describe 'edit comment', type: :system do
       sign_in user
       visit post_path(comment.post)
 
-      within("##{dom_id(comment)}") do
+      within("##{dom_id(comment.post)}_#{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
+        fill_in 'comment[body]', with: ''
+        click_on 'Submit'
+        expect(page).to have_content("Body can't be blank")
       end
-
-      fill_in 'comment[body]', with: ''
-      click_on 'Submit'
-      expect(page).to have_content("Body can't be blank")
     end
   end
 end
+
