@@ -1,5 +1,5 @@
 <div class="box">
-  <%= turbo_frame_tag dom_id(Comment.new) do %>
+  <%= turbo_frame_tag "#{dom_id(post)}_#{dom_id(Comment.new)}" do %>
   
     <% if comment.errors.any? %>
       <% comment.errors.full_messages.each do |msg| %>

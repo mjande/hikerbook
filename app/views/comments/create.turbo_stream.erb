@@ -1,0 +1,2 @@
+<%= turbo_stream.append "#{dom_id(@post)}_comments", @comment %>
+<%= turbo_stream.update "#{dom_id(@post)}_#{dom_id(Comment.new)}", '' %>

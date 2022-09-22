@@ -11,7 +11,7 @@
   </div>
 
   <div class="media-right">
-    <div><%= link_to 'Edit', edit_post_comment_path(post, comment)%></div>
-    <div><%= button_to 'Delete', post_comment_path(post, comment), method: :delete, class: 'remove-btn-style' %></div>
+    <div><%= link_to 'Edit', edit_post_comment_path(comment.post, comment)%></div>
+    <div><%= button_to 'Delete', post_comment_path(comment.post, comment), method: :delete, class: 'remove-btn-style' %></div>
   </div>
 <% end %>
