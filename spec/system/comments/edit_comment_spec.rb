@@ -5,20 +5,23 @@ require 'rails_helper'
 RSpec.describe 'add comment', type: :system do
   include ActionView::RecordIdentifier
 
-  let!(:user) { create(:user) }
-  let!(:post) { create(:post) }
   let!(:comment) { create(:comment) }
+  let!(:user) { User.find_by(username: 'Commenter') }
 
   context 'with valid inputs' do
     it 'updates comments on post' do
       sign_in user
-      visit posts_path
-      
-      within(dom_id(comment)) do
+      visit post_comments_path(comment.post)
+
+      within("##{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
-        fill_in 'This is an updated comment example'
-        click_on 'Submit'
+      end
+
+      fill_in 'comment[body]', with: 'This is an updated comment example'
+      click_on 'Submit'
+
+      within("##{dom_id(comment)}") do
         expect(page).to have_content('This is an updated comment example')
       end
     end
@@ -27,14 +30,17 @@ RSpec.describe 'add comment', type: :system do
   context 'with invalid inputs' do
     it 'does not update comment and displays error message' do
       sign_in user
-      visit posts_path
-      
-      within(dom_id(comment)) do
+      visit post_comments_path(comment.post)
+
+      within("##{dom_id(comment)}") do
         expect(page).to have_content('This is a comment example')
         click_on 'Edit'
-        click_on 'Submit'
-        expect(page).to have_content("Comment body can't be blank")
       end
+
+      fill_in 'comment[body]', with: ''
+      click_on 'Submit'
+      sleep(5)
+      expect(page).to have_content("Body can't be blank")
     end
   end
 end

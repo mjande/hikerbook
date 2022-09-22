@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    user factory: :friend
-    post factory: :commenter
-    body { 'This is an comment example' }
+    user factory: :commenter
+    post
+    body { 'This is a comment example' }
   end
 end
