@@ -5,18 +5,18 @@ require 'rails_helper'
 RSpec.describe 'add comment', type: :system do
   include ActionView::RecordIdentifier
 
-  let!(:user) { create(:user) }
+  let!(:commenter) { create(:commenter) }
   let!(:post) { create(:post) }
 
   before do
-    Friendship.create(user1: user, user2: post.user)
+    Friendship.create(user1: commenter, user2: post.user)
   end
 
   context 'with valid inputs' do
     it 'adds comments to post' do
       expect(Comment.count).to eq(0)
 
-      sign_in user
+      sign_in commenter
       visit posts_path
 
       within("##{dom_id(post)}") do
@@ -35,7 +35,7 @@ RSpec.describe 'add comment', type: :system do
     it 'does not create comment and displays error message' do
       expect(Comment.count).to eq(0)
 
-      sign_in user
+      sign_in commenter
       visit posts_path
 
       within("##{dom_id(post)}") do

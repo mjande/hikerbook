@@ -6,7 +6,7 @@ RSpec.describe 'add comment', type: :system do
   include ActionView::RecordIdentifier
 
   let!(:comment) { create(:comment) }
-  let!(:user) { User.find_by(username: 'Commenter') }
+  let(:user) { User.find_by(username: 'Commenter') }
 
   context 'with valid inputs' do
     it 'updates comments on post' do
@@ -39,7 +39,6 @@ RSpec.describe 'add comment', type: :system do
 
       fill_in 'comment[body]', with: ''
       click_on 'Submit'
-      sleep(5)
       expect(page).to have_content("Body can't be blank")
     end
   end
