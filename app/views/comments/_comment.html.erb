@@ -10,8 +10,10 @@
     <div><%= comment.body %></div>
   </div>
 
-  <div class="media-right">
-    <div><%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %></div>
-    <div><%= button_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: { turbo_method: :delete }, class: 'remove-btn-style' %></div>
-  </div>
+  <% if comment.user == current_user %>
+    <div class="media-right">
+      <div><%= link_to 'Edit', edit_post_comment_path(comment.post, comment) %></div>
+      <div><%= button_to 'Delete', post_comment_path(comment.post, comment), method: :delete, data: { turbo_method: :delete }, class: 'remove-btn-style' %></div>
+    </div>
+  <% end %>
 <% end %>

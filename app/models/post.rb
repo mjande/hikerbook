@@ -17,7 +17,7 @@ class Post < ApplicationRecord
   # partials effectively.
   after_create_commit :broadcast_prepend_post
   after_update_commit :broadcast_update_post
-  after_destroy_commit :broadcast_destroy_post
+  after_destroy_commit :broadcast_remove_post
 
   def time
     time_zone = ActiveSupport::TimeZone['Eastern Time (US & Canada)']
@@ -31,15 +31,17 @@ class Post < ApplicationRecord
   private
 
   def broadcast_prepend_post
-    broadcast_prepend_later_to [Current.user, 'posts'], target: 'posts',
-                                                        locals: { user: nil, post: self }
+    broadcast_prepend_later_to [Current.user, 'posts'],
+                               target: 'posts',
+                               locals: { user: nil, post: self }
   end
 
   def broadcast_update_post
-    broadcast_replace_later_to [Current.user, 'posts'], locals: { user: nil, post: self }
+    broadcast_replace_later_to [Current.user, 'posts'],
+                               locals: { user: nil, post: self }
   end
 
-  def broadcast_destroy_post
+  def broadcast_remove_post
     broadcast_remove_to [Current.user, 'posts']
   end
 end
