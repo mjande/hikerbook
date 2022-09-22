@@ -13,4 +13,4 @@
   </div>
 <% end %>
 
-<%= render partial: @post, locals: { user: current_user, comments: @comments } %>
+<%= render partial: @comment.post, locals: { user: current_user, comments: @comments } %>

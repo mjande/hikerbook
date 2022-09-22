@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_post
+  before_action :set_post, except: %i[edit update]
   before_action :set_comment, only: %i[edit update destroy]
 
   def index; end
