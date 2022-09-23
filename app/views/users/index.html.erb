@@ -15,6 +15,17 @@
     <% end %>
   <% end %>
 
-  <h1 class="title">All Users</h1>
-  <%= render @users %>
+  <h2 class="subtitle">Friends</h2>
+  <%= render current_user.friends%>
+  <br>
+
+  <h2 class="subtitle">Friend Requests</h2>
+  <%= render current_user.requesting_friends %>
+  <%= render current_user.requested_friends%>
+  <br>
+
+  <h2 class="subtitle">Potential Friends</h2>
+  <%= render current_user.potential_friends %>
+
+  <h1 class="title">
 <% end %>

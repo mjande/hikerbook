@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       respond_to do |format|
-        format.html { redirect_to post_path(@post) }
+        format.html { redirect_to post_path(@comment.post) }
         format.turbo_stream 
       end
     else

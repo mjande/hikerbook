@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'edit comment', type: :system, js: true do
+RSpec.describe 'edit comment', type: :system do
   include ActionView::RecordIdentifier
 
   let!(:comment) { create(:comment) }

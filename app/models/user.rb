@@ -48,6 +48,10 @@ class User < ApplicationRecord
     friends_as1 + friends_as2
   end
 
+  def potential_friends
+    User.where.not(id: [friends]).where.not(id: [requesting_friends]).where.not(id: [requested_friends]).where.not(id:)
+  end
+
   def sent_request_to(user)
     FriendRequest.find_by(sender: self, receiver: user)
   end

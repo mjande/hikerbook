@@ -22,7 +22,6 @@ otto = User.create(username: 'Otto Piotrowski', email: 'otto@example.com', passw
 User.create(username: 'Dexter Chen', email: 'dexter@example.com', password: 'password')
 User.create(username: 'Mladen Rosenberg', email: 'mladen@example.com', password: 'password')
 
-
 # Add default friendships
 Friendship.create(user1: chris, user2: mary)
 Friendship.create(user1: chris, user2: james)

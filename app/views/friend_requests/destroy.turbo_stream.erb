@@ -1,2 +1,2 @@
-<%= turbo_stream.update "#{dom_id(@friend_request.sender)}_card", @friend_request.receiver %>
+<%= turbo_stream.update "#{dom_id(@friend_request.sender)}_card", @friend_request.sender %>
 <%= render_turbo_stream_flash_messages %>

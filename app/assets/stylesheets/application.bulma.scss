@@ -46,10 +46,7 @@ $button-border-color: $smoky-black;
 
 @media screen and (min-width: 1024px) {
   .navbar-item.has-dropdown {
-    margin-right: 0.5rem
-  }
-  .navbar-dropdown {
-    margin-top: 0.37rem;
+    margin-right: 0.5rem;
   }
 }
 
@@ -57,4 +54,8 @@ $button-border-color: $smoky-black;
 
 .hidden {
   display: none;
+}
+
+.navbar-item img {
+  max-height: none;
 }

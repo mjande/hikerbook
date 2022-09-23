@@ -1,0 +1,19 @@
+<div class="box">
+  <div class="media is-flex is-align-items-center">
+    
+    <div class="media-left">
+      <figure class='image is-48x48'>
+        <img class='is-rounded'src='https://picsum.photos/48/48'>
+      </figure>
+    </div>
+
+    <div class="media-content">
+      <strong><%= sender.username %></strong>
+    </div>
+
+    <div class="media-right is-flex">
+      <%= button_to "Add Friend", Friendship.new, params: { user2: sender }, class: 'button' %>
+      <%= button_to "Ignore", current_user.received_request_from(sender), method: :delete, class: 'button ml-1 has-background-danger has-text-white-bis' %>
+    </div>
+  </div>
+</div>

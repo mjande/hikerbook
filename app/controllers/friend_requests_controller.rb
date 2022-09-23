@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class FriendRequestsController < ApplicationController
-  before_action :set_friend_request, only: :create
+  before_action :build_friend_request, only: :create
+  before_action :set_friend_request, only: :destroy
 
   def create
     if @friend_request.save
@@ -18,8 +19,6 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
-    @friend_request = FriendRequest.find(params[:id])
-
     if @friend_request.destroy
       respond_to do |format|
         format.html { redirect_to users_path, flash: { success: 'The friend request was ignored!' } }
@@ -35,7 +34,11 @@ class FriendRequestsController < ApplicationController
 
   private
 
-  def set_friend_request
+  def build_friend_request
     @friend_request = FriendRequest.new(sender_id: current_user.id, receiver_id: params[:receiver])
+  end
+
+  def set_friend_request
+    @friend_request = FriendRequest.find(params[:id])
   end
 end
