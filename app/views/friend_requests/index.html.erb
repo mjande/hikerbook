@@ -1,12 +1,14 @@
-<div class="box">
-  <h1 class="title">Pending Friend Requests</h1>
-  <%= render current_user.requesting_friends %>
-  
-  <hr>
+<%= turbo_frame_tag 'middle-column' do %>
+  <div class="box">
+    <h1 class="title">Pending Friend Requests</h1>
+    <%= render current_user.requesting_friends %>
+    
+    <hr>
 
-  <h1 class='title'>Sent Friend Requests</h1>
-  <%= render current_user.requested_friends %>
-  <br>
+    <h1 class='title'>Sent Friend Requests</h1>
+    <%= render current_user.requested_friends %>
+    <br>
 
-  <%= link_to 'Make New Friends', users_path, data: { turbo_frame: 'middle-column' } %>
-</div>
+    <%= link_to 'Make New Friends', users_path, data: { turbo_frame: 'middle-column' } %>
+  </div>
+<% end %>
