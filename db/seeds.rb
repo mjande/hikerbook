@@ -34,6 +34,7 @@ FriendRequest.create(sender: sylvia, receiver: chris)
 FriendRequest.create(sender: chris, receiver: mona)
 FriendRequest.create(sender: chris, receiver: otto)
 
+
 # Create some initial posts
 chris.posts.create!(trail: 'Yosemite Falls Trail',
                    park: 'Yosemite National Park',
@@ -50,3 +51,6 @@ mary.posts.create!(trail: "Angel's Landing",
 james.posts.create!(trail: 'Bright Angel Trail',
                    park: 'Grand Canyon National Park',
                    description: "Great views of the Grand Canyon, but this one isn't for beginners. The hike down is easy, but hiking back up can be quite challenging.")
+
+
+

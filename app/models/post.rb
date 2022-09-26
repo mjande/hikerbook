@@ -31,6 +31,9 @@ class Post < ApplicationRecord
   private
 
   def broadcast_prepend_post
+    # Guard clause to return when populating database (w/o a current user)
+    return unless Current.user
+
     Current.user.friends.each do |friend|
       broadcast_prepend_later_to friend,
                                  target: 'posts',
