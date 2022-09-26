@@ -31,17 +31,22 @@ class Post < ApplicationRecord
   private
 
   def broadcast_prepend_post
-    broadcast_prepend_later_to [Current.user, 'posts'],
-                               target: 'posts',
-                               locals: { user: nil, post: self }
+    Current.user.friends.each do |friend|
+      broadcast_prepend_later_to friend,
+                                 target: 'posts',
+                                 locals: { user: friend, post: self }
+    end
   end
 
   def broadcast_update_post
-    broadcast_replace_later_to [Current.user, 'posts'],
-                               locals: { user: nil, post: self }
+    Current.user.friends.each do |friend|
+      broadcast_replace_later_to friend, locals: { user: friend, post: self }
+    end
   end
 
   def broadcast_remove_post
-    broadcast_remove_to [Current.user, 'posts']
+    Current.user.friends.each do |friend|
+      broadcast_remove_to friend
+    end
   end
 end

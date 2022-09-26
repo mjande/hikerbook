@@ -12,8 +12,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <%= turbo_stream_from current_user %>
 
+    <%= render 'layouts/navbar' %>
 
     <div id="flash">
       <%= render 'layouts/flash' %>

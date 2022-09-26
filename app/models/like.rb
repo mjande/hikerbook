@@ -5,9 +5,11 @@ class Like < ApplicationRecord
   belongs_to :user
 
   def update_like_count
-    Turbo::StreamsChannel.broadcast_update_later_to [Current.user, 'posts'],
-                                                    partial: 'posts/likes/like_count',
-                                                    target: "post_#{post.id}_like_count",
-                                                    locals: { post: }
+    Current.user.friends.each do |friend|
+      Turbo::StreamsChannel.broadcast_update_later_to friend,
+                                                      partial: 'posts/likes/like_count',
+                                                      target: "post_#{post.id}_like_count",
+                                                      locals: { post: }
+    end
   end
 end

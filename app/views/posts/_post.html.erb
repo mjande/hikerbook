@@ -19,7 +19,7 @@
 
     <div class="p-4"><%= post.description %></div>
 
-    <div class=""><%= post.time %></div>
+    <div class="px-4"><%= post.time %></div>
 
     <hr class="m-2">
 
@@ -28,7 +28,7 @@
 
   <div class='p-4 py-5' data-controller='comments' data-comments-hidden-class='hidden'>
     <%= turbo_frame_tag "#{dom_id(post)}_comments" do %>
-      <%= render post.comments.persisted, post: post %>
+      <%= render partial: post.comments.persisted, locals: { post:, user: } %>
     <% end %>
 
     <div class="px-3">

@@ -17,7 +17,6 @@
   <div class="navbar-menu" data-navbar-target='menu'>
     <div class="navbar-end is-flex" id="navbar-end">
       <% if user_signed_in? %>
-        
         <div class="navbar-item has-dropdown is-hoverable" id='account-menu'>
           <a class='navbar-link is-arrowless button is-white ml-5'>
             <%= current_user.username %>
@@ -33,23 +32,8 @@
           </div>
         </div>
 
-         <div class="navbar-item has-dropdown is-hoverable">
-          <a class='navbar-link is-arrowless has-text-white is-hidden-mobile is-hidden-tablet-only'> 
-            <i class="fa-solid fa-bell"></i>
-          </a>
-          <div class="navbar-dropdown is-right p-0">
-            <% if current_user.received_requests.count == 0 %>
-              <div class='navbar-item'>You don't have any friend requests yet. Check back later!</div>
-            <% else %>
-              <div class="navbar-item" id="requests-text">
-                You have <%= current_user.received_requests.count %> pending friend requests.
-              </div>
-              <div class="navbar-item">
-                <%= link_to 'View Friend Requests', friend_requests_path, data: { turbo_frame: 'middle-column' } %> 
-              </div>
-            <% end %>  
-          </div>
-        </div>
+        <%= render 'layouts/friend_request_notifications', friend_request_count: current_user.received_requests.count %>
+
       <% else %>
         <div class="navbar-item">
           <%= link_to 'Login', new_user_session_path, class: 'button is-white' %>

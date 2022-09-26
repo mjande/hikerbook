@@ -1,1 +1,1 @@
-<%= turbo_stream.replace @comment.to_dom_id, @comment %>
+<%= turbo_stream.replace @comment.to_dom_id, partial: 'comments/comment', locals: { comment: @comment, user: current_user } %>

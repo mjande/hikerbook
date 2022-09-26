@@ -1,4 +1,5 @@
-<%= turbo_stream.append "#{dom_id(@post)}_comments", @comment %>
+<%= turbo_stream.append "#{dom_id(@post)}_comments", partial: 'comments/comment', locals: { comment: @comment, user: current_user } %>
+
 <%= turbo_stream.update "#{dom_id(@post)}_#{dom_id(Comment.new)}" do %>
   <%= link_to 'Leave a comment', new_post_comment_path(@post) %>
 <% end %>
