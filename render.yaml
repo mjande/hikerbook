@@ -1,7 +1,7 @@
 databases:
-  - name: HikerBook
+  - name: hikerbook
     databaseName: postgresql
-    user: HikerBook
+    user: hikerbook
 
 services:
   - type: web
