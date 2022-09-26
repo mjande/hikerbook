@@ -15,30 +15,10 @@
   </div>
 
   <div class="navbar-menu" data-navbar-target='menu'>
-    <div class="navbar-end is-flex is-align-items-center">
+    <div class="navbar-end is-flex" id="navbar-end">
       <% if user_signed_in? %>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class='navbar-link is-arrowless has-text-white' id="notification-icon"> 
-            <i class="fa-solid fa-bell"></i>
-          </a>
-          <div class="navbar-dropdown is-right">
-            <% if current_user.received_requests.count == 0 %>
-              <div class='navbar-item'>You don't have any friend requests yet. Check back later!</div>
-            <% elsif current_user.received_requests.count >= 1 %>
-              <div class="navbar-item">
-                You have <%= current_user.received_requests.count %> pending friend requests.
-              </div>
-              <div class="navbar-item">
-                <%= link_to 'View Friend Requests', friend_requests_path, data: { turbo_frame: 'middle-column' } %> 
-              </div>
-
-            <% end %>  
-          </div>
-        </div>
         
-
-        <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-item has-dropdown is-hoverable" id='account-menu'>
           <a class='navbar-link is-arrowless button is-white ml-5'>
             <%= current_user.username %>
           </a>
@@ -50,6 +30,24 @@
             <div class="navbar-item">
               <%= button_to "Logout", destroy_user_session_path, class: "button is-white", method: :delete %>
             </div>
+          </div>
+        </div>
+
+         <div class="navbar-item has-dropdown is-hoverable">
+          <a class='navbar-link is-arrowless has-text-white is-hidden-mobile is-hidden-tablet-only'> 
+            <i class="fa-solid fa-bell"></i>
+          </a>
+          <div class="navbar-dropdown is-right p-0">
+            <% if current_user.received_requests.count == 0 %>
+              <div class='navbar-item'>You don't have any friend requests yet. Check back later!</div>
+            <% else %>
+              <div class="navbar-item" id="requests-text">
+                You have <%= current_user.received_requests.count %> pending friend requests.
+              </div>
+              <div class="navbar-item">
+                <%= link_to 'View Friend Requests', friend_requests_path, data: { turbo_frame: 'middle-column' } %> 
+              </div>
+            <% end %>  
           </div>
         </div>
       <% else %>

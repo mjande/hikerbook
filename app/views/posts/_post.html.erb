@@ -31,9 +31,7 @@
       <%= render post.comments.persisted, post: post %>
     <% end %>
 
-    
-
-    <div class="px-3 pt-3">
+    <div class="px-3">
       <a data-comments-target='showLink', data-action='comments#show', class='pr-3'>See more comments</a>
       <a data-comments-target='hideLink', data-action='comments#hide', class='pr-3 hidden'>Hide additional comments</a>
       
