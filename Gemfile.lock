@@ -150,6 +150,10 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jwt (2.5.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -368,6 +372,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7, >= 4.7.3)
   importmap-rails
   jbuilder
+  letter_opener
   omniauth-facebook
   omniauth-rails_csrf_protection
   pg (~> 1.1)

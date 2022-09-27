@@ -85,6 +85,9 @@ group :development do
 
   # Use guard to automate running of test suite
   gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
+
+  # Use letter_opener to work with mailers while in development mode
+  gem 'letter_opener'
 end
 
 group :test do
