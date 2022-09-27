@@ -2,9 +2,9 @@
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -63,5 +63,18 @@ class User < ApplicationRecord
   def friendship_with(user)
     Friendship.find_by(user1_id: self, user2_id: user) ||
       Friendship.find_by(user1_id: user, user2_id: self)
+  end
+
+  # For use with omniauth, see https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.username = auth.info.name # assuming the user model has a name
+      # user.image = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
+    end
   end
 end

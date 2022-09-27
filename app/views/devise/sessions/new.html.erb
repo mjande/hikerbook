@@ -26,13 +26,17 @@
       </div>
     <% end %>
 
-    <div class="actions">
-      <%= f.submit "Log in", class: 'button mb-2' %><br />
-    </div>
+    <div class="actions is-flex is-align-items-center mb-3">
+      <%= f.submit "Log in", class: 'button' %>
+    
   <% end %>
+
+      <p class='mx-4'>or</p> 
+      <%= button_to "Login with Facebook", user_facebook_omniauth_authorize_path, method: :post, data: { turbo: false }, class: 'button is-success' %>
+    </div>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <div class="is-inline pr-2">Don't have an account?</div>  
     <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end %>
+  <% end %>
 </div>
