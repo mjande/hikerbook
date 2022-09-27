@@ -94,13 +94,13 @@ Rails.application.configure do
   # Configuration for sending emails with Gmail
   config.action_mailer.delivery_method = :smtp
   host = 'https://radiant-crag-76822.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.default_url_options = { host: }
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    username: ENV['gmail_username'],
+    user_name: ENV['gmail_username'],
     password: ENV['gmail_password'],
     authentication: 'plain',
     enable_starttls_auto: true
