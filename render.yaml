@@ -1,6 +1,6 @@
 databases:
   - name: HikerBook
-    databaseName: postgresql
+    databaseName: HikerBook
     user: HikerBook
 
 services:
