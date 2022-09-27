@@ -81,4 +81,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: hikerbook_production
+  username: hikerbook
+  password: <%= ENV["HIKERBOOK_DATABASE_PASSWORD"] %>
