@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
+  
+  has_one_attached :avatar
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
+  validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
+                     file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
 
   has_many :posts, dependent: :destroy
 
@@ -76,5 +81,15 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  def avatar_pic
+    avatar.attached? ? avatar.variant(resize_to_fill: [48, 48]) : gravatar_url
+  end
+
+  # https://stackoverflow.com/questions/14361952/rails-gravatar-helper-method
+  def gravatar_url
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=retro"
   end
 end
