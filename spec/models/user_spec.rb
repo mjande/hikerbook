@@ -12,6 +12,10 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of(:password) }
   it { should have_many(:posts) }
 
+  it 'sends and email' do
+    expect { user.save }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+
   describe 'friend_requests' do
     let(:requesting_friend) do
       create(:user, username: 'Requesting Friend',
