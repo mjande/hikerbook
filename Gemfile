@@ -65,6 +65,7 @@ gem 'omniauth-rails_csrf_protection'
 
 # Validate files for avatars and picture uploads
 gem 'file_validators'
+gem "ruby-vips"
 
 # Support for AWS S3 storage
 gem "aws-sdk-s3", require: false
