@@ -49,7 +49,6 @@ FriendRequest.create(sender: sylvia, receiver: chris)
 FriendRequest.create(sender: chris, receiver: mona)
 FriendRequest.create(sender: chris, receiver: otto)
 
-
 # Create some initial posts
 chris.posts.create!(trail: 'Yosemite Falls Trail',
                    park: 'Yosemite National Park',

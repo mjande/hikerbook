@@ -42,12 +42,18 @@ class Post < ApplicationRecord
   end
 
   def broadcast_update_post
+    # Guard clause to return when populating database (w/o a current user)
+    return unless Current.user
+    
     Current.user.friends.each do |friend|
       broadcast_replace_later_to friend, locals: { user: friend, post: self }
     end
   end
 
   def broadcast_remove_post
+    # Guard clause to return when populating database (w/o a current user)
+    return unless Current.user
+    
     Current.user.friends.each do |friend|
       broadcast_remove_to friend
     end
