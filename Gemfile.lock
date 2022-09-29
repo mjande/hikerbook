@@ -410,6 +410,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rest-client (~> 2.1)
   rspec-rails (~> 5.1, >= 5.1.2)
+  ruby-vips
   selenium-webdriver
   shoulda-matchers (~> 5.0)
   simplecov
