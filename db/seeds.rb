@@ -11,25 +11,10 @@ User.destroy_all
 
 # Create some default users
 chris = User.create!(username: 'Chris Smith', email: 'chris@example.com', password: 'password')
-chris.avatar.attach(io: File.open(Rails.root.join('app/assets/images/avatars/pexels-pixabay-220453.jpg')),
-                    filename: 'avatar.jpg')
-
 mary = User.create!(username: 'Mary Murphy', email: 'mary@example.com', password: 'password')
-mary.avatar.attach(io: File.open(Rails.root.join('app/assets/images/avatars/pexels-andrea-piacquadio-774909.jpg')),
-                   filename: 'avatar.jpg')
-
 james = User.create!(username: 'James Jameson', email: 'james@example.com', password: 'password')
-james.avatar.attach(io: File.open(Rails.root.join('app/assets/images/avatars/pexels-lan-yao-13103824.jpg')),
-                    filename: 'avatar.jpg')
-
 shawn = User.create(username: 'Shawn Whinery', email: 'shawn@example.com', password: 'password')
-shawn.avatar.attach(io: File.open(Rails.root.join('app/assets/images/avatars/pexels-justin-shaifer-1222271.jpg')),
-                    filename: 'avatar.jpg')
-
 lauren = User.create(username: 'Lauren Van Daele', email: 'lauren@example.com', password: 'password')
-lauren.avatar.attach(io: File.open(Rails.root.join('app/assets/images/avatars/pexels-sebastian-voortman-214574.jpg')),
-                     filename: 'avatar.jpg')
-
 mani = User.create(username: 'Mani Andreas', email: 'mani@example.com', password: 'password')
 sylvia = User.create(username: 'Sylvia Samuel', email: 'sylvia@example.com', password: 'password')
 mona = User.create(username: 'Mona Vukovic', email: 'mona@example.com', password: 'password')
