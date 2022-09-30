@@ -8,12 +8,11 @@
     <div class='field'>
       <%= f.label :avatar, class: 'label' %>
       <div class='is-flex is-align-items-center mb-2 control'>
-        <%= f.file_field :avatar, class: 'file' %>
-        
         <figure class='image is-48x48 mr-3'>
           <%= image_tag resource.avatar_pic, class: 'is-rounded'%>
         </figure>
-
+        
+        <%= f.file_field :avatar, class: 'file' %>
         <a href='https://en.gravatar.com/'>Or upload a profile image via Gravatar</a>
       </div>
     </div>
