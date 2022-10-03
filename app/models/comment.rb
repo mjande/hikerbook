@@ -19,6 +19,8 @@ class Comment < ApplicationRecord
   private
 
   def broadcast_prepend_comment
+    return unless Current.user
+
     Current.user.friends.each do |friend|
       broadcast_append_later_to friend,
                                 target: "#{dom_id(post)}_comments",
@@ -27,6 +29,8 @@ class Comment < ApplicationRecord
   end
 
   def broadcast_update_comment
+    return unless Current.user
+
     Current.user.friends.each do |friend|
       broadcast_replace_later_to friend,
                                  target: to_dom_id,
@@ -35,6 +39,8 @@ class Comment < ApplicationRecord
   end
 
   def broadcast_remove_comment
+    return unless Current.user
+
     Current.user.friends.each do |friend|
       broadcast_remove_to friend,
                           target: to_dom_id

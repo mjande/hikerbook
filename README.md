@@ -32,3 +32,5 @@ Photo by Justin Shaifer: https://www.pexels.com/photo/photography-of-a-guy-weari
 Photo by Sebastian Voortman: https://www.pexels.com/photo/woman-jumping-wearing-green-backpack-214574/
 
 Photo by Josh Sorenson: https://www.pexels.com/photo/brown-valley-during-a-grey-cloudy-sky-63553/
+Photo by Pixabay: https://www.pexels.com/photo/adventure-autumn-california-country-533881/
+Photo by Pixabay: https://www.pexels.com/photo/woman-standing-on-edge-of-mountain-413788/
