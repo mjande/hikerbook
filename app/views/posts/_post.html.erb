@@ -1,5 +1,14 @@
 <%= turbo_frame_tag dom_id(post) do %>
-<div class="post box my-5 p-0">
+<div class="post card my-5 p-0">
+  <div class="card-image">
+    <% if post.image.attached? %>
+      <figure class='image'>
+        <%= image_tag post.image %>
+      </figure>
+    <% end %>
+  </div>
+  
+  
   <div class="box mb-0">
     <div class="media">
       <div class="media-left">

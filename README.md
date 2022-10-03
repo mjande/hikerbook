@@ -30,3 +30,5 @@ Photo by Pixabay: https://www.pexels.com/photo/man-smiling-behind-wall-220453/
 Photo by Lan Yao: https://www.pexels.com/photo/photograph-of-a-man-in-a-green-shirt-hiking-13103824/
 Photo by Justin Shaifer: https://www.pexels.com/photo/photography-of-a-guy-wearing-green-shirt-1222271/
 Photo by Sebastian Voortman: https://www.pexels.com/photo/woman-jumping-wearing-green-backpack-214574/
+
+Photo by Josh Sorenson: https://www.pexels.com/photo/brown-valley-during-a-grey-cloudy-sky-63553/

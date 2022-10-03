@@ -9,6 +9,10 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [48, 48]
+    attachable.variant :post, resize_to_fit: [1080, 1920]
+  end
 
   # User variable is set to nil to disable controls in broadcasted posts. _post
   # and post/controls partial both depend on knowing who the current user is,

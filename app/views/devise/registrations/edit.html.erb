@@ -12,8 +12,10 @@
           <%= image_tag resource.avatar_pic, class: 'is-rounded'%>
         </figure>
         
-        <%= f.file_field :avatar, class: 'file' %>
-        <a href='https://en.gravatar.com/'>Or upload a profile image via Gravatar</a>
+        <div class="control">
+          <%= f.file_field :avatar, class: 'file' %>
+          <a href='https://en.gravatar.com/'>Or upload a profile image via Gravatar</a>
+        </div>
       </div>
     </div>
 
