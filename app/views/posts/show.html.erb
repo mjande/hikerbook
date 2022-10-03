@@ -1,1 +1,14 @@
-<%= render partial: @post, locals: { user: current_user, comments: @comments }  %>
+<%= turbo_frame_tag 'middle-column' do %>  
+  <div class="level">
+    <div class="level-left">
+      <%= link_to "\u2190 Back to posts", posts_path, data: { turbo_frame: '_top' } %>
+    </div>
+  </div>
+  
+  <div class="mb-3">
+    <%= render partial: @post, locals: { user: current_user, comments: @comments }  %>
+  </div>
+<% end %>
+
+
+

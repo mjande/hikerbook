@@ -8,35 +8,45 @@
     <% end %>
   <% end %>
 
-  <div class="box">
-    <%= form_with model: post, id: 'form' do |f| %>
-      <div class="field">
-        <%= f.label :image, 'Image (optional)', class: 'field-label' %>
-        <div class="control">
-          <%= f.file_field :image, class: 'file'%>
-        </div>
-      </div>
-      
-      <div class="field is-horizontal">
-        <div class="field mr-5">
-          <%= f.label :trail, 'Trail Name:', class: 'field-label' %>
-          <div class="control field-body">
-            <%= f.text_field :trail, class: 'input' %>
-          </div>
-        </div>
-        <div class="field mr-5">
-          <%= f.label :park, 'Park Name:', class: 'field-label' %>
-          <div class="control field-body">
-            <%= f.text_field :park, class: 'input' %>
-          </div>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-image">
+      <% if post.image.attached? %>
+        <figure class='image'>
+          <%= image_tag post.image %>
+        </figure>
+      <% end %>
+    </div>
 
-      <div class="field">
-        <%= f.label :description, 'Description:' %>
-        <div class="control"><%= f.text_area :description, class: 'textarea', rows: 3 %></div>
-      </div>
-      <%= f.submit class: 'button' %>
-    <% end %>
+    <div class="card-content">
+      <%= form_with model: post, id: 'form' do |f| %>
+        <div class="field">
+          <%= f.label :image, 'Image (optional)', class: 'field-label' %>
+          <div class="control">
+            <%= f.file_field :image, class: 'file'%>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field mr-5">
+            <%= f.label :trail, 'Trail Name:', class: 'field-label' %>
+            <div class="control field-body">
+              <%= f.text_field :trail, class: 'input' %>
+            </div>
+          </div>
+          <div class="field mr-5">
+            <%= f.label :park, 'Park Name:', class: 'field-label' %>
+            <div class="control field-body">
+              <%= f.text_field :park, class: 'input' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :description, 'Description:' %>
+          <div class="control"><%= f.text_area :description, class: 'textarea', rows: 3 %></div>
+        </div>
+        <%= f.submit class: 'button' %>
+      <% end %>
+    </div>
   </div>
 <% end %>

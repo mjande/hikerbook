@@ -1,11 +1,13 @@
-<%= turbo_frame_tag 'middle-column' do%>  
+<%= turbo_frame_tag 'middle-column' do %>  
   <div class="level">
     <div class="level-left">
-      <%= link_to "\u2190 Back to posts", posts_path %>
+      <%= link_to "\u2190 Back to posts", posts_path, data: { turbo_frame: '_top' } %>
     </div>
   </div>
   
-  <%= render @user %>
+  <div class="mb-3">
+    <%= render @user %>
+  </div>
 
   <h1 class="title">Posts</h1>
   <div>

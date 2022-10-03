@@ -27,7 +27,7 @@
           </div>
         <% elsif current_user.sent_request_to(user) %>
           <div>Friend Request Sent!</div>
-        <% else %>
+        <% elsif current_user != user %>
           <%= button_to "Send Friend Request", FriendRequest.new, params: { receiver: user}, class: 'button' %>
         <% end %>
       </div>
