@@ -1,27 +1,10 @@
-# README
+# HikerBook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The social media platform for lovers of the great outdoors. Make friends with fellow hikers, post about your most recent hike, and explore new trails and parks posted by other users.
 
-Things you may want to cover:
+This is a practice project created as part of the curriculum at [The Odin Project](theodinproject.com). Project specs can be found [here](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project).
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Table of Contents
 
 Avatars sourced from pexels.com
 https://www.pexels.com/photo/man-smiling-behind-wall-220453/

@@ -5,6 +5,8 @@ class Like < ApplicationRecord
   belongs_to :user
 
   def update_like_count
+    return unless Current.user
+
     Current.user.friends.each do |friend|
       Turbo::StreamsChannel.broadcast_update_later_to friend,
                                                       partial: 'posts/likes/like_count',

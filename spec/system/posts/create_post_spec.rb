@@ -8,7 +8,7 @@ RSpec.describe 'create post', type: :system do
   context 'with valid inputs' do
     it 'successfully saves post' do
       expect(Post.count).to eq(0)
-      
+
       sign_in user
       visit posts_path
 
@@ -19,12 +19,14 @@ RSpec.describe 'create post', type: :system do
       fill_in 'post[trail]', with: 'Blue Loop'
       fill_in 'post[park]', with: 'Olympic National Park'
       fill_in 'post[description]',	with: 'Trail description'
+      attach_file 'post[image]', Rails.root.join('app/assets/images/test.jpg')
       click_on 'Create Post'
 
       within('.post') do
         expect(page).to have_content('Blue Loop')
         expect(page).to have_content('Olympic National Park')
         expect(page).to have_content('Trail description')
+        expect(page).to have_css("img[src*='test.jpg']")
       end
 
       expect(Post.count).to eq(1)
