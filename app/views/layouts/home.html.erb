@@ -22,7 +22,9 @@
     
     <section class="section">
       <div class="columns">
-        <div class="column">Recent Photos</div>
+        <div class="column" id='left-column'>
+          <%= render 'parks/index' %>
+        </div>
         <div class="column is-half">
           <%= turbo_frame_tag 'middle-column' do%>
             <%= yield %>

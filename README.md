@@ -34,3 +34,9 @@ Photo by Sebastian Voortman: https://www.pexels.com/photo/woman-jumping-wearing-
 Photo by Josh Sorenson: https://www.pexels.com/photo/brown-valley-during-a-grey-cloudy-sky-63553/
 Photo by Pixabay: https://www.pexels.com/photo/adventure-autumn-california-country-533881/
 Photo by Pixabay: https://www.pexels.com/photo/woman-standing-on-edge-of-mountain-413788/
+
+Photo by Blue Arauz: https://www.pexels.com/photo/waves-crashing-on-rocky-shore-near-green-trees-10053124/
+Photo by Kerry: https://www.pexels.com/photo/body-of-water-and-smoke-534371/
+Photo by Robert Schrader: https://www.pexels.com/photo/a-countryside-road-surrounded-by-pine-trees-7042875/
+Photo by Dick Hoskins: https://www.pexels.com/photo/landscape-scenery-of-the-famous-denali-in-alaska-6678515/
+Photo by Roberto Nickson: https://www.pexels.com/photo/two-women-sitting-on-rock-facing-on-body-of-water-and-mountain-2609463/
