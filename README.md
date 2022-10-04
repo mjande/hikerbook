@@ -2,11 +2,11 @@
 
 ![HikerBook Logo](/app/assets/images/logo.png)
 
-![Home Page](/app/assets/images/home_page.png)
-
 The social media platform for lovers of the great outdoors. Make friends with fellow hikers, post about your most recent hike, and explore new trails and parks posted by other users.
 
 This is a practice project created as part of the curriculum at [The Odin Project](theodinproject.com). It was built using Ruby on Rails, Devise for user authentication, Hotwire for single-page layout and live updates, and Bulma for styling. Project specs can be found [here](https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project).
+
+![Home Page](/app/assets/images/home_page.png)
 
 ## Table of Contents
 
@@ -22,7 +22,7 @@ This is a practice project created as part of the curriculum at [The Odin Projec
 
 You can access a live version of the app at [https://radiant-crag-76822.herokuapp.com/](https://radiant-crag-76822.herokuapp.com/). When you reach the site, you will need to login or signup.
 
-Picture of signup screen
+![Signup Page](/app/assets/images/signup.png)
 
 To signup as a new user, click the 'Sign Up' button. Enter your email, username, and password, and upload an avatar from your local files or using Gravatar.
 
@@ -54,8 +54,6 @@ rails db:migrate
 rails db:seed # if you would like access to seed data for users, posts, and comments
 bin/dev
 ```
-
-Note: In order to broadcast posts, comments, and likes to your friends' streams, the app must be configured to use Redis as an adapter. For installation and troubleshooting 
 
 ## Usage
 
