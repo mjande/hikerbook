@@ -18,11 +18,12 @@ This is a practice project created as part of the curriculum at [The Odin Projec
 
 ## Getting Started
 
-![Login Page](/app/assets/images/login.png)
+<img src='app/assets/images/login.png' alt='login page' width='640px'>
 
 You can access a live version of the app at [https://radiant-crag-76822.herokuapp.com/](https://radiant-crag-76822.herokuapp.com/). When you reach the site, you will need to login or signup.
 
-![Signup Page](/app/assets/images/signup.png)
+
+<img src='app/assets/images/signup.png' alt='signup page' width='640px'>
 
 To signup as a new user, click the 'Sign Up' button. Enter your email, username, and password, and upload an avatar from your local files or using Gravatar.
 
