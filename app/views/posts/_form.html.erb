@@ -20,7 +20,7 @@
     <div class="card-content">
       <%= form_with model: post, id: 'form' do |f| %>
         <div class="field">
-          <%= f.label :image, 'Image (optional)', class: 'field-label' %>
+          <%= f.label :image, 'Image (optional):', class: 'field-label' %>
           <div class="control">
             <%= f.file_field :image, class: 'file'%>
           </div>
