@@ -51,7 +51,8 @@ Enter the commands below in your terminal to get started.
 git clone git@github.com:mjande/hikerbook.git  
 bundle install  
 rails db:create  
-rails db:migrate  
+rails db:migrate 
+brew services start redis # for MacOS users. Other users should consult the docs at https://redis.io/docs/getting-started/ for installing and starting Redis 
 rails db:seed # if you would like access to seed data for users, posts, and comments
 bin/dev
 ```
