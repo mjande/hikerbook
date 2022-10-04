@@ -58,7 +58,7 @@ bin/dev
 
 ## Usage
 
-Create post gif
+![creating a post](app/assets/images/create_post.mp4)
 
 To create a post, click the 'New Post' button on the main page. Tell your friends what trail you hiked, where it was, and write a short description if you like. You can also attach an image by clicking Choose File under the 'Image (optional)' heading. When you're done, click create post to add your post to your friends' streams and your own.
 
@@ -96,4 +96,4 @@ bundle exec rspec spec/system # run system specs
 
 I am grateful for the support, guidance, and inspiration offered by the folks at [the Odin Project](theodinproject.com) and their Discord.
 
-Avatars and other images come from [pexels.com]. A list of sources can be found [here](image_sources.txt).
+Avatars and other images come from [pexels.com](pexels.com). A list of sources can be found [here](image_sources.txt).
