@@ -58,27 +58,27 @@ bin/dev
 
 ## Usage
 
-![creating a post](app/assets/images/create_post_low.gif)
+![creating a post](app/assets/images/create_post.gif)
 
 To create a post, click the 'New Post' button on the main page. Tell your friends what trail you hiked, where it was, and write a short description if you like. You can also attach an image by clicking Choose File under the 'Image (optional)' heading. When you're done, click create post to add your post to your friends' streams and your own.
 
-Update post gif
+![updating a post](app/assets/images/update_post.gif)
 
 To update one of your posts, click the edit icon (a pencial on a small square) just above the comments on your post. A form will appear, where you can edit any aspect of your previously created post. Once you click 'Update Post', your newly updated post will apear on both your friends' streams and your own.
 
-Leave a comment gif
+![leaving a comment](app/assets/images/leave_comment.gif)
 
 To leave a comment, find the 'Leave a comment' link beneath the post you wish to comment on. Click that link, and fill in the text box with the thoughts you want to share. When you're done, 'Submit'. Your comment will appear underneath the post for any users with access to that post (friends of the original poster).
 
-Like a post gif
+![liking a post](app/assets/images/like_post.gif)
 
 To like a post, click the heart the post description. Previously liked posts are indicated by a filled-in heart icon. Unliked posts are indicated by a hollow heart icon
 
-Send friend request gif
+![sending a friend request](app/assets/images/send_friend_request.gif)
 
 To find new friends, click the 'Make New Friends' link in the Friends sidebar on the right hand side. You will see a list of all HikerBook users, categorized by your relationship with them (Friends, Friends requested by you or who have requested you, and Potential Friends). Scroll to the 'Potential Friends' list at the bottom of the page. If you see a user you are interested in friending, click the 'Send Friend Request' buttom next to the name. They will need to accept your request before you will be friends.
 
-Respond to friend request gif
+![responding to a friend request](app/assets/images/respond_to_friend_request.gif)
 
 You can check on any incoming friend requests by hovering over the noticiations (bell) icon near the top of your screen. (Mobile users will need to access the menu by clicking the three-lined menu icon). You will see a number, indicating how many friend requests you have received but not yet answered. Click the link titled "View Friend Requests" to go to the friend requests page, where you can view these requests and see any requests that you have sent. To accept a request, click 'Add Friend', and to reject a request, click 'Ignore'.
 
