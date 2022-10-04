@@ -58,7 +58,7 @@ bin/dev
 
 ## Usage
 
-![creating a post](app/assets/images/create_post.mp4)
+![creating a post](app/assets/images/create_post_low.gif)
 
 To create a post, click the 'New Post' button on the main page. Tell your friends what trail you hiked, where it was, and write a short description if you like. You can also attach an image by clicking Choose File under the 'Image (optional)' heading. When you're done, click create post to add your post to your friends' streams and your own.
 
