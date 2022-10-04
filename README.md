@@ -72,7 +72,7 @@ To leave a comment, find the 'Leave a comment' link beneath the post you wish to
 
 ![liking a post](app/assets/images/like_post.gif)
 
-To like a post, click the heart the post description. Previously liked posts are indicated by a filled-in heart icon. Unliked posts are indicated by a hollow heart icon
+To like a post, click the heart underneath the post description. Previously liked posts are indicated by a filled-in heart icon. Unliked posts are indicated by a hollow heart icon
 
 ![sending a friend request](app/assets/images/send_friend_request.gif)
 

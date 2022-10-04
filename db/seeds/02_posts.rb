@@ -7,13 +7,13 @@ james = User.find_by(username: 'James Jameson')
 # Create some initial posts
 yosemite = sample_user.posts.create!(trail: 'Yosemite Falls Trail',
                           park: 'Yosemite National Park',
-                          description: 'Amazing hike featuring a beautiful view of Yosemite Falls. A must for anyone visiting Yosemite')
+                          description: 'Amazing hike featuring a beautiful view of Yosemite Falls. A must for anyone visiting Yosemite.')
 io = URI.parse('https://hikerbook.s3.us-east-2.amazonaws.com/seed_files/yosemite_image.jpg').open
 yosemite.image.attach(io:, filename: 'yosemite_image.jpg')
 
 sample_user.posts.create!(trail: 'Grand Prismatic Spring Overlook Trail',
                           park: 'Yellowstone National Park',
-                          description: "If you're looking to see the amazing geysers at Yellowstone, check this trail out! Hiking this trail was a blast for me and my children.")
+                          description: "If you're looking to see the amazing geysers at Yellowstone, check this trail out! Hiking this trail was a blast for me and my wife.")
 
 glacier = mary.posts.create!(trail: 'Highline Trail',
                    park: 'Glacier National Park',

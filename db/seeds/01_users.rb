@@ -31,6 +31,9 @@ Friendship.create(user1: sample_user, user2: mary)
 Friendship.create(user1: sample_user, user2: james)
 Friendship.create(user1: sample_user, user2: shawn)
 Friendship.create(user1: sample_user, user2: lauren)
+Friendship.create(user1: james, user2: mary)
+Friendship.create(user1: james, user2: shawn)
+Friendship.create(user1: james, user2: lauren)
 
 # Add some default friend requests
 FriendRequest.create(sender: mani, receiver: sample_user)

@@ -9,7 +9,7 @@
       </div>
 
       <div class="media-content">
-        <strong><%= user.username %></strong>
+        <strong><%= link_to user.username, user, class: 'has-text-black' %></strong>
         <% if current_user.friendship_with(user) %>
           <div>Friends</div>
         <% elsif current_user.received_request_from(user) %>
