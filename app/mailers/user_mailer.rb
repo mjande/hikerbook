@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# The UserMailer manages emails sent to users. Only a welcome email has been
+# implemented at this time.
 class UserMailer < ApplicationMailer
   default from: 'welcome@hikerbook.com'
 

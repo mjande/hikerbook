@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# The CommentsController handles the REST actions for the Comment model.
 class CommentsController < ApplicationController
   before_action :set_post, except: %i[edit update]
   before_action :set_comment, only: %i[edit update destroy]
@@ -28,7 +31,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       respond_to do |format|
         format.html { redirect_to post_path(@comment.post) }
-        format.turbo_stream 
+        format.turbo_stream
       end
     else
       # Error messages will be displayed above _form, rather than in the flash hash.

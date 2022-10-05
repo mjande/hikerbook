@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# The User class represents users of the application. User are tied to the
+# posts, comments, and likes they create, and the friend requests and
+# friendships they are a part of.
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable

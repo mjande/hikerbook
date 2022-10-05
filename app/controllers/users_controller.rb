@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# The UsersController handles the REST actions for the User model.
 class UsersController < ApplicationController
   before_action :authenticate_user!
 

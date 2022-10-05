@@ -38,4 +38,3 @@ RSpec.describe 'edit comment', type: :system do
     end
   end
 end
-

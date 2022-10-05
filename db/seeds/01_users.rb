@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Create some default users
 sample_user = User.create!(username: 'Sample User', email: 'user@example.com', password: 'password')
 io = URI.parse('https://hikerbook.s3.us-east-2.amazonaws.com/seed_files/sample_user_avatar.jpg').open

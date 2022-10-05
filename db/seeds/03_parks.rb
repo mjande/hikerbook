@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 acadia = Park.create(name: 'Acadia National Park')
 io = URI.parse('https://hikerbook.s3.us-east-2.amazonaws.com/seed_files/acadia_image.jpg').open
 acadia.image.attach(io:, filename: 'acadia_image.jpg')

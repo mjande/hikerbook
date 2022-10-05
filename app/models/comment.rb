@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# The Comment model represents comments made by users on posts (either others'
+# posts or their own)
 class Comment < ApplicationRecord
   include ActionView::RecordIdentifier # to use dom_id method
 

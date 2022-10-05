@@ -4,3 +4,18 @@ require:
 
 RSpec/ImplicitExpect:
   EnforcedStyle: should
+
+Layout/LineLength: 
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'db/migrate/*.rb'
+    - 'db/schema.rb'
+    - 'config/**/*.rb'
+    - 'bin/*'
+    - 'app/helpers/application_helper.rb'
+    - 'app/controllers/users/omniauth_callbacks_controller.rb'
+    - 'app/controllers/turbo_devise_user_controller.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'Guardfile'

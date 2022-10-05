@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Reset database
 User.destroy_all
 

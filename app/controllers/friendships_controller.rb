@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The FriendshipsController handles the REST actions for the Friendship model.
 class FriendshipsController < ApplicationController
   before_action :build_friendship, only: :create
   before_action :set_friendship, only: :destroy

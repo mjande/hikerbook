@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# The Friendship model represents a relationship between two users. Friends can
+# see each other's posts, like each other's posts, and leave comments on them.
 class Friendship < ApplicationRecord
   after_create :destroy_friend_request
 

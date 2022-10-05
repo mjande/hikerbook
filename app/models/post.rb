@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# The Post model represents hikes recently completed by users and shared with
+# their friends. Users can like and comment on their friends' post.
 class Post < ApplicationRecord
   validates :trail, presence: true
   validates :park, presence: true
@@ -48,7 +50,7 @@ class Post < ApplicationRecord
   def broadcast_update_post
     # Guard clause to return when populating database (w/o a current user)
     return unless Current.user
-    
+
     Current.user.friends.each do |friend|
       broadcast_replace_later_to friend, locals: { user: friend, post: self }
     end
@@ -57,7 +59,7 @@ class Post < ApplicationRecord
   def broadcast_remove_post
     # Guard clause to return when populating database (w/o a current user)
     return unless Current.user
-    
+
     Current.user.friends.each do |friend|
       broadcast_remove_to friend
     end

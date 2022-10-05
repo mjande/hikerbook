@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 sample_user = User.find_by(email: 'user@example.com')
 james = User.find_by(email: 'james@example.com')
 mary = User.find_by(email: 'mary@example.com')

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# The LikesController handles the REST actions for the Like model.
 class LikesController < ApplicationController
   before_action :build_like, only: :create
   before_action :set_like, only: :destroy

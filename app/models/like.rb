@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# The Like model represents a user liking another's post. Each post displays the
+# total number of likes from the creator's friends, indicating the post's
+# overall popularity.
 class Like < ApplicationRecord
   after_commit :update_like_count
 

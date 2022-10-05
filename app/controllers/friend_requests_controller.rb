@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# The FriendRequestsController handles the REST actions for the FriendRequest model.
 class FriendRequestsController < ApplicationController
   before_action :build_friend_request, only: :create
   before_action :set_friend_request, only: :destroy

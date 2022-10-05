@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# The FriendRequest model represents a pending request for friendship between
+# two users. The user who initiates the resquest is called the sender, while the
+# one who will respond to it is called the receiver.
 class FriendRequest < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
