@@ -1,7 +1,7 @@
 <div class="media is-flex is-flex-direction-column is-align-items-center">
   <figure class='image'>
     <% if park.image.attached? %>
-      <%= image_tag park.image.variant(:sidebar), id: 'park-image' %>
+      <%= image_tag park.image, id: 'park-image' %>
     <% end %>
   </figure>
 
