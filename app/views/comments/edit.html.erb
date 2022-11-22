@@ -3,7 +3,7 @@
 <%= turbo_frame_tag @comment.to_dom_id, class: 'media px-3' do %>
   <div class="media-left">
     <figure class='image is-48x48'>
-      <img class='is-rounded'src='https://picsum.photos/48/48'>
+      <%= image_tag @comment.user.avatar_pic, class: 'is-rounded' %>
     </figure>
   </div>
 
