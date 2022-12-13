@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 =begin
+
+# After switching to deployment on Railway, this seed file was causing the server to crash, 
+# so I put these records through manually using the rails console. With my upgraded plan and 
+# more available RAM, this seed SHOULD be able to process as in, but I left it alone just
+# in case.
+
 acadia = Park.create(name: 'Acadia National Park')
 io = URI.parse('https://hikerbook.s3.us-east-2.amazonaws.com/seed_files/acadia_image.jpg').open
 acadia.image.attach(io:, filename: 'acadia_image.jpg')
