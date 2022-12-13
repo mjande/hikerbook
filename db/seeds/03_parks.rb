@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+=begin
 acadia = Park.create(name: 'Acadia National Park')
 io = URI.parse('https://hikerbook.s3.us-east-2.amazonaws.com/seed_files/acadia_image.jpg').open
 acadia.image.attach(io:, filename: 'acadia_image.jpg')
@@ -19,3 +20,4 @@ rainer.image.attach(io:, filename: 'mount_rainer_image.jpg')
 denali = Park.create(name: 'Denali National Park and Preserve', url: 'https://www.nps.gov/dena/index.htm')
 io = URI.parse('https://hikerbook.s3.us-east-2.amazonaws.com/seed_files/denali_image.jpg').open
 denali.image.attach(io:, filename: 'denali_image.jpg')
+=end
