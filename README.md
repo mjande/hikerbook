@@ -20,7 +20,7 @@ This is a practice project created as part of the curriculum at [The Odin Projec
 
 <img src='app/assets/images/login.png' alt='login page' width='640px'>
 
-You can access a live version of the app at [https://radiant-crag-76822.herokuapp.com/](https://radiant-crag-76822.herokuapp.com/). When you reach the site, you will need to login or signup.
+You can access a live version of the app at https://hikerbook-production.up.railway.app/ When you reach the site, you will need to login or signup.
 
 
 <img src='app/assets/images/signup.png' alt='signup page' width='640px'>
